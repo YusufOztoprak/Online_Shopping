@@ -28,6 +28,8 @@ class user:
 kullanici = user("yusuf", "fake@gmail.com", "cosefthegreate", "yusuf3131", "inönü akul hastanesi")
 
 print(kullanici.email)
+print(kullanici.email)
+
 
 
 
