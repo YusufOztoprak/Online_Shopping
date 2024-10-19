@@ -6,7 +6,7 @@ class user:
         self.password = password
         self.address = address
 
-        """def get_Name(self):
+        def get_Name(self):
             return self.name
 
         def get_Email(self):
@@ -20,7 +20,7 @@ class user:
             return self.__password
 
         def __get_address(self):
-            return self.__address"""
+            return self.__address
 
         def displayinfo(self):
             return f"kullanıcı adı:{self.username}, email:{self.email},  adrress: {self.address}"
