@@ -11,7 +11,7 @@ class Cart:
     def total_price(self):
         total = 0
         for product in self.products:
-            total += product.price
+            total += product._get_price() * product._get_quantity()
         return total
     
     def clear_cart():
