@@ -1,5 +1,5 @@
 class Cart:
-    def_init__(self): # type: ignore
+    def_init__(self): 
         self.products = []
 
     def add_product(self, product):
