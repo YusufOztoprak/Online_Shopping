@@ -1,3 +1,5 @@
+from NewPkg import Product
+
 class Cart:
     def_init__(self): 
         self.products = []
