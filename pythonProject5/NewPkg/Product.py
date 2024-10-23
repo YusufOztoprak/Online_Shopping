@@ -1,26 +1,50 @@
-
+import uuid
 class Product:
 
-    def __init__(self,name, price, quantity):
-        self.name = name
-        self.price = price
-        self.quantity = quantity
+    products = []
 
-    def _get_name(self):
-        return self._name
+    def __init__(self, name, price, amount):
+        self.__name = name
+        self.__price = price
+        self.__amount = amount
+        self.__Id = uuid.uuid4()
 
-    def _get_price(self):
-        return self._price
-
-    def _get_quantity(self):
-        return self._quantity
-
-    def displayproduct(self):
-        print(f"ürün adı: {self.name}\nürün fiyatı: {self.price}\nquantity:{self.quantity}")
+    def add_product(self, product):
+        Product.products.append(product)
 
 
+    def get__name(self):
+        return self.__name
+
+    def get__price(self):
+        return  self.__price
+
+    def get__amount(self):
+        return self.__amount
+
+    def get__Id(self):
+        return  self.__Id
+
+    def set__name(self,name):
+        self.__name = name
+
+    def  set__price (self,price):
+        self.__price = price
+
+    def set__amount(self, amount):
+        self.__amount = amount
+
+    def set__Id(self, Id):
+        self.__Id = Id
 
 
-urun =Product("samsung", 2000, 2)
+    @classmethod
+    def listeyiyazdir(self):
+        for i in Product.products:
+            print(i.get__name())
 
-Product.displayproduct(urun)
+
+p1 = Product("akvaryum", 100,2)
+Product.listeyiyazdir()
+
+
