@@ -3,11 +3,12 @@ class Product:
 
     products = []
 
-    def __init__(self, name, price, amount):
+    def __init__(self, name, price, amount,card):
         self.__name = name
         self.__price = price
         self.__amount = amount
         self.__Id = uuid.uuid4()
+        self.__card = card
 
     def add_product(self, product):
         Product.products.append(product)
