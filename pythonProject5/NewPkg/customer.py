@@ -4,12 +4,13 @@ class customer:
 
 
 
-    def __init__(self, name, email,address, phone_number):
+    def __init__(self, name, email,address, phone_number,card):
         self.__name = name
         self.__email = email
         self.__address = address
         self.__phone_number = phone_number
         self.__Id = uuid.uuid4()
+        self.__card = card
 
 
 
