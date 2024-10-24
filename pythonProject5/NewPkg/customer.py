@@ -5,7 +5,6 @@ class customer:
 
 
     def __init__(self, name, email,address, phone_number):
-        "3131"
         self.__name = name
         self.__email = email
         self.__address = address
