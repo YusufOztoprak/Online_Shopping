@@ -1,3 +1,4 @@
+
 class Cart:
 
     def __init__(self):
@@ -23,3 +24,5 @@ class Cart:
 
     def clear_cart(self):
         self.cart = []
+
+
