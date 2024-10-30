@@ -1,5 +1,7 @@
-class Technology:
-    def __init__(self, warranty,ram, storage):
+from Product import  Product
+class Technology(Product):
+    def __init__(self,  name, price, amount, warranty, ram, storage):
+        super.__init__(name, price, amount)
         self.warranty = warranty
         self.ram = ram
         self.storage = storage
