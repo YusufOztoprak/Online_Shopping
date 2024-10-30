@@ -2,7 +2,6 @@ class Cart:
 
     def __init__(self):
         self.cart = []
-        self.total = 0
 
 
     def add_product(self, product):
