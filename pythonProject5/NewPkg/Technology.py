@@ -1,5 +1,5 @@
 class Technology:
-    def __init__(self):
+    def __init__(self, warranty,ram, storage):
         self.warranty = warranty
         self.ram = ram
         self.storage = storage
