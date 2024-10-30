@@ -37,7 +37,6 @@ class Product:
     def set__Id(self, Id):
         self.__Id = Id
 
-
     @classmethod
     def listeyiyazdir(self):
         for i in Product.products:
