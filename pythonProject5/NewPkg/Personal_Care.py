@@ -1,8 +1,9 @@
-from Product import Product
+import Product
 
 class PersonalCare(Product):
+    PersonalCare_list = []
     def __init__(self, name, price,amount,Id,expiration_date,brand):
-        super().__init__(name ,price,amount,Id)
+        super().__init__(name,price,amount,Id)
         self.expiration_date = expiration_date
         self.brand = brand
 
@@ -18,4 +19,25 @@ class PersonalCare(Product):
 
     def set_brand(self,brand):
         self.brand = brand
+    def add_personal_care(self,item):
+        PersonalCare.PersonalCare_list.remove(item)
+
+    def remove_personal_care(self):
+        PersonalCare.PersonalCare_list.remove(self)
+
+    def findbyName(self,name):
+        for personal_care in PersonalCare.PersonalCare_list:
+            if personal_care.name == name:
+                return True
+            return False
+
+    def findbyBrand(self,brand):
+        for personal_care in PersonalCare.PersonalCare_list:
+            if personal_care.brand == brand:
+                return True
+            return False
+
+
+    def __str__(self):
+        return f"PersonalCare(Name: {self.name}, Price: {self.price}, Amount: {self.amount}, ID: {self.Id}, Expiration Date: {self.expiration_date}, Brand: {self.brand})"
 
