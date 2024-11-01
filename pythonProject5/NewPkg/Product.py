@@ -1,7 +1,8 @@
 import uuid
-class Product:
 
+class Product:
     products = []
+
 
     def __init__(self, name, price, amount):
         self.__name = name
@@ -10,10 +11,10 @@ class Product:
         self.__Id = uuid.uuid4()
 
     def add_product(self, product):
-        Product.products.append(product)
+        self.products.append(product)
 
     def remove_product(self,product):
-        Product.products.remove(product)
+        self.products.remove(product)
 
     def get__name(self):
         return self.__name
@@ -48,7 +49,7 @@ class Product:
 
 
 
-p1 = Product("akvaryum", 100,2)
-Product.listeyiyazdir()
+"""p1 = Product("akvaryum", 100,2)
+Product.listeyiyazdir()"""
 
 
