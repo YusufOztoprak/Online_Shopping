@@ -12,6 +12,8 @@ class Product:
     def add_product(self, product):
         Product.products.append(product)
 
+    def remove_product(self,product):
+        Product.products.remove(product)
 
     def get__name(self):
         return self.__name
@@ -37,10 +39,13 @@ class Product:
     def set__Id(self, Id):
         self.__Id = Id
 
+
+
     @classmethod
     def listeyiyazdir(self):
         for i in Product.products:
             print(i.get__name())
+
 
 
 p1 = Product("akvaryum", 100,2)
