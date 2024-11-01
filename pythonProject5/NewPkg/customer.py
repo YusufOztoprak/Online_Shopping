@@ -1,9 +1,6 @@
 import uuid
 class customer:
 
-
-
-
     def __init__(self, name, email,address, phone_number):
         self.__name = name
         self.__email = email
