@@ -2,7 +2,7 @@ import Personal_Care
 class Shampoo(Personal_Care):
     Shampoo_list = []
 
-    def __init__(self, name, price,amount,Id,expiration_date,brand,paraben,hairType,volume):
+    def __init__(self, name, price, amount, Id,expiration_date,brand,paraben,hairType,volume):
         super().__init__(name,price,amount,expiration_date,Id,brand)
         self.paraben = paraben
         self.hairType = hairType
