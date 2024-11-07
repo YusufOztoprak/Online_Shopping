@@ -3,7 +3,7 @@ from pythonProject5.NewPkg import customer
 
 
 class Order:
-    def __init__(self):
+    def __init__(self,cart:cart,customer:customer):
         self.cart = cart
         self.customer = customer
         self.total = 0

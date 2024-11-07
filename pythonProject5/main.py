@@ -44,7 +44,7 @@ def main():
             if customer1.cart.cart_list:
                 print("\nYour Cart:")
                 for i, product in enumerate(customer1.cart.cart_list, start=1):
-                    print(f"{i}. {product}")
+                    print(f"{i}. {product.get__name()}")
 
                 try:
                     product_choice = int(input("Which product would you like to remove? (1 to remove): ")) - 1

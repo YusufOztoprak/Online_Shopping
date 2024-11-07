@@ -10,7 +10,7 @@ class Cart:
         if product in self.cart:
             self.cart.remove(product)
         else:
-            print(f"{product} is not in the cart.")
+            print(f"{product.get__name()} is not in the cart.")
 
     def total_price(self):
         total = 0
@@ -27,4 +27,4 @@ class Cart:
         else:
             print("Your cart contains:")
             for product in self.cart:
-                print(product)
+                print(product.get__name())
