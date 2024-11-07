@@ -9,7 +9,7 @@ class customer:
         self.__address = address
         self.__phone_number = phone_number
         self.__Id = uuid.uuid4()
-        self.cart = cart()
+        self.cart = cart
 
 
 

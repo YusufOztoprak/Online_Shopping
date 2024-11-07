@@ -6,6 +6,9 @@ def main():
     urun1 = Product("Test Product", 100, 1)
     urun2 = Product("Phone", 3000, 3)
     urun3 = Product("Laptop", 5000, 2)
+    Product.add_product(urun1,urun1)
+    Product.add_product(urun2, urun2)
+    Product.add_product(urun3, urun3)
 
     customer1 = customer("Ahmet", "ahmet@gmail.com", "Malatya", "085067055")
 
@@ -21,14 +24,14 @@ def main():
 
         if option == 1:
             print("\nAvailable Products:")
-            for i, product in enumerate(Product.product_list, start=1):
-                print(f"{i}. {product}")
+            for i, product in enumerate(Product.products, start=1):
+                print(f"{i}. {product.get__name()}")
 
             try:
                 product_choice = int(input("\nChoose a product by number: ")) - 1
                 quantity = int(input("How many would you like to add? "))
-                if 0 <= product_choice < len(Product.product_list):
-                    product = Product.product_list[product_choice]
+                if 0 <= product_choice < len(Product.products):
+                    product = Product.products[product_choice]
                     if product.amount >= quantity:
                         for _ in range(quantity):
                             customer1.add_to_cart(product)
@@ -60,7 +63,7 @@ def main():
 
         elif option == 3:
             print("\nAll Available Products:")
-            for product in Product.product_list:
+            for product in Product.products:
                 print(product)
 
         elif option == 4:
