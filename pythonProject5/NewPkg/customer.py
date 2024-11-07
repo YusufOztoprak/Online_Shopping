@@ -1,3 +1,5 @@
+from NewPkg import cart
+
 import uuid
 class customer:
 
@@ -7,9 +9,19 @@ class customer:
         self.__address = address
         self.__phone_number = phone_number
         self.__Id = uuid.uuid4()
+        self.cart = cart()
 
 
 
+
+    def add_to_cart(self,product):
+        self.cart.add_product(product)
+
+    def remove_from_cart(self,product):
+        self.cart.remove_product(product)
+
+    def show_cart(self):
+        return self.cart.show_cart()
     def get__Id(self):
         return self.__Id
     def get__name(self):
@@ -43,13 +55,13 @@ class customer:
 
 
 
-customer1 = customer("mehmet", "my0308", "malatya")
-print(customer1.get__address())
-customer1.set__address("hatay")
-print(customer1.get__address())
-customer1.get_info()
-
 # nesne oluşturabiliyoruz
+# customer2 = customer("mehmet", "my0308", "malatya")
+#print(customer1.get__address())
+#customer1.set__address("hatay")
+#print(customer1.get__address())
+#customer1.get_info()
+
 
 
 
