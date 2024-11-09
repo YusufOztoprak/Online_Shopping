@@ -1,9 +1,10 @@
-from NewPkg import cart
+from pythonProject5.NewPkg import cart
 
 import uuid
+
 class customer:
 
-    def __init__(self, name, email,address, phone_number):
+    def __init__(self, name, email,address, phone_number, cart :cart):
         self.__name = name
         self.__email = email
         self.__address = address
@@ -11,17 +12,32 @@ class customer:
         self.__Id = uuid.uuid4()
         self.cart = cart
 
+    def add_product(self, product):
+        self.cart.append(product)
 
+    def remove_product(self, product):
+        if product in self.cart:
+            self.cart.remove(product)
+        else:
+            print(f"{product.get__name()} is not in the cart.")
 
+    def total_price(self):
+        total = 0
+        for product in self.cart:
+            total += product.price
+        return total
 
-    def add_to_cart(self,product):
-        self.cart.add_product(product)
-
-    def remove_from_cart(self,product):
-        self.cart.remove_product(product)
+    def clear_cart(self):
+        self.cart = []
 
     def show_cart(self):
-        return self.cart.show_cart()
+        if not self.cart:
+            print("Your cart is empty.")
+        else:
+            print("Your cart contains:")
+            for product in self.cart:
+                print(product.get__name())
+
     def get__Id(self):
         return self.__Id
     def get__name(self):
@@ -61,11 +77,3 @@ class customer:
 #customer1.set__address("hatay")
 #print(customer1.get__address())
 #customer1.get_info()
-
-
-
-
-
-
-
-

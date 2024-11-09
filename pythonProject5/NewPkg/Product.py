@@ -10,6 +10,12 @@ class Product:
         self.__amount = amount
         self.__Id = uuid.uuid4()
 
+    def getinfo(self,product):
+        print(f"ürün ismi:{product.__name}")
+        print(f"ürün fiyatı:{product.__price}")
+        print(f"ürün miktarı:{product.__amount}")
+        print(f"ürün kimliği:{product.__Id}")
+
     def add_product(self, product):
         self.products.append(product)
 
@@ -40,16 +46,13 @@ class Product:
     def set__Id(self, Id):
         self.__Id = Id
 
-
-
-    @classmethod
-    def listeyiyazdir(self):
-        for i in Product.products:
-            print(i.get__name())
+    def printList(self):
+        for product in self.products:
+            print(product.getinfo())
 
 
 
 """p1 = Product("akvaryum", 100,2)
 Product.listeyiyazdir()"""
 
-4
+
