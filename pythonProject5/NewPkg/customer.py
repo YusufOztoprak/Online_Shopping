@@ -4,7 +4,7 @@ import uuid
 
 class customer:
 
-    def __init__(self, name, email,address, phone_number, cart :cart):
+    def __init__(self, name, email,address, phone_number , cart:cart):
         self.__name = name
         self.__email = email
         self.__address = address

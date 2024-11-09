@@ -52,7 +52,5 @@ class Product:
 
 
 
-"""p1 = Product("akvaryum", 100,2)
-Product.listeyiyazdir()"""
 
 

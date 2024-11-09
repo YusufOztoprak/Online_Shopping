@@ -1,24 +1,25 @@
-from Technology import Technology
+from pythonProject5.NewPkg.Technology import Technology
+
 
 class Phone(Technology):
     Phones = []
-    def __init__(self,  name, price, amount, warranty, ram, storage, fiveGsupport, numberofCameras, fastCharging):
+
+    def __init__(self, name, price, amount, warranty, ram, storage, fiveGsupport, numberofCameras, fastCharging):
         super().__init__(name, price, amount, warranty, ram, storage)
         self.fiveGsupport = fiveGsupport
         self.numberofCameras = numberofCameras
         self.fastCharging = fastCharging
 
-
     def getFiveGSupport(self):
         return self.fiveGsupport
 
-    def setFiveGSupport(self,FiveGSupport):
+    def setFiveGSupport(self, FiveGSupport):
         self.fiveGsupport = FiveGSupport
 
     def getNumberOfCameras(self):
-        return self.numberofCameras;
+        return self.numberofCameras
 
-    def setNumberOfCameras(self,numberOfCameras):
+    def setNumberOfCameras(self, numberOfCameras):
         self.numberofCameras = numberOfCameras
 
     def getFastCharging(self):
@@ -33,4 +34,3 @@ class Phone(Technology):
     def ListPhones(self):
         for i in self.Phones:
             print(i.getName(), i.getPrice())
-

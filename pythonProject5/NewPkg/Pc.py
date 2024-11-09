@@ -1,7 +1,7 @@
-from Technology import Technology
+from pythonProject5.NewPkg import Technology
 
 
-class Pc(Technology):
+class Pc(Technology.Technology):
     PcList = []
 
     def __init__(self, name, price, amount, warranty, ram, storage):
