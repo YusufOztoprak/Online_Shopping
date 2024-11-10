@@ -2,7 +2,7 @@ class Cart:
 
     def __init__(self):
         self.cart = []
-
+"""
     def add_product(self, product):
         self.cart.append(product)
 
@@ -28,3 +28,4 @@ class Cart:
             print("Your cart contains:")
             for product in self.cart:
                 print(product.get__name())
+"""

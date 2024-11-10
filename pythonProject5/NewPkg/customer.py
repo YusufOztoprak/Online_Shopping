@@ -4,22 +4,26 @@ import uuid
 
 class customer:
 
+
     def __init__(self, name, email,address, phone_number , cart:cart):
-        self.__name = name
+        self.__namecus = name
         self.__email = email
         self.__address = address
         self.__phone_number = phone_number
         self.__Id = uuid.uuid4()
         self.cart = cart
 
+
     def add_product(self, product):
         self.cart.append(product)
 
-    def remove_product(self, product):
-        if product in self.cart:
-            self.cart.remove(product)
-        else:
-            print(f"{product.get__name()} is not in the cart.")
+    def remove_product(self):
+        isim = input("isim:")
+        for product in self.cart:
+            if product.get__name() == isim:
+                self.cart.remove(product)
+            else:
+                print(f"{product.get__name()} is not in the cart.")
 
     def total_price(self):
         total = 0
@@ -40,10 +44,10 @@ class customer:
 
     def get__Id(self):
         return self.__Id
-    def get__name(self):
+    def get__namecus(self):
         return self.__name
 
-    def set__name(self, name):
+    def set__namecus(self, name):
         self.__name = name
 
     def get__email(self):
