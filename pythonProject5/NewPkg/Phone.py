@@ -13,7 +13,7 @@ class Phone(Technology):
         self.numberofCameras = numberofCameras
         self.fastCharging = fastCharging
         self.Phones.append(self)
-        self.excel_kaydet()
+        #self.excel_kaydet()
 
     def excel_kaydet(self):
         # Telefon nesnesini DataFrame olarak oluştur

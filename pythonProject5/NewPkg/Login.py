@@ -1,5 +1,6 @@
-import  hashlib
+import hashlib
 import json
+
 
 def hash_password(password):
     has_p = hashlib.sha256(password.encode())
@@ -17,14 +18,13 @@ veri = [
     }
 ]
 
-with open('veri.json','w') as  json_file:
-    json.dump(veri,json_file)
+with open('veri.json', 'w') as json_file:
+    json.dump(veri, json_file)
 
 
 def cheek_paswword(username, password):
     with open('veri.json', 'r') as json_file:
         kullanicilar = json.load(json_file)
-
 
     for kullanici in kullanicilar:
         if kullanici["username"] == username:
@@ -35,9 +35,4 @@ def cheek_paswword(username, password):
                 return False
     return False
 
-
-username_input = input("kullanıcı adı:")
-password_input = input("kullanıcı şifresi:")
-
-dogru = cheek_paswword(username_input,password_input)
 
