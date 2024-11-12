@@ -5,8 +5,8 @@ import uuid
 class customer:
 
 
-    def __init__(self, name, email,address, phone_number , cart:cart):
-        self.__namecus = name
+    def __init__(self, namecus, email,address, phone_number , cart:cart):
+        self.__namecus = namecus
         self.__email = email
         self.__address = address
         self.__phone_number = phone_number
