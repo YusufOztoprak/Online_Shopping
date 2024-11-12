@@ -12,8 +12,8 @@ class Phone(Technology):
         self.fiveGsupport = fiveGsupport
         self.numberofCameras = numberofCameras
         self.fastCharging = fastCharging
-        self.Phones.append(self)
-        #self.excel_kaydet()
+        #self.Phones.append(self)
+        self.excel_kaydet()
 
     def excel_kaydet(self):
         # Telefon nesnesini DataFrame olarak oluştur
@@ -41,8 +41,9 @@ class Phone(Technology):
         # Yeni veya güncellenmiş veriyi Excel'e kaydet
         yeni_veri.to_excel("telefon_urunleri.xlsx", index=False)
 
-    def __repr__(self):
-        return f"Telefon({self.get__name()}, {self.get__price()}, {self.get__amount()}, {self.get_warranty()}, {self.get_ram()}, {self.get_storage()},{self.getFiveGSupport()},{self.getNumberOfCameras()},{self.getFastCharging()}"
+    """def __repr__(self):
+        return f"Telefon({self.get__name()}, {self.get__price()}, {self.get__amount()}, {self.get_warranty()}, {self.get_ram()}, {self.get_storage()},{self.getFiveGSupport()},{self.getNumberOfCameras()},{self.getFastCharging()}"""
+
 
     def getFiveGSupport(self):
         return self.fiveGsupport
@@ -111,4 +112,6 @@ class Phone(Technology):
 
         # Yeni veya güncellenmiş veriyi Excel'e kaydet
         yeni_veri.to_excel("telefon_urunleri.xlsx", index=False)"""
+
+
 

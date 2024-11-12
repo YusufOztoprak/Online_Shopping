@@ -10,8 +10,9 @@ def hash_password(password):
 # Yeni kullanıcıyı JSON dosyasına ekleyen fonksiyon
 def add_user(username, password):
     # Dosya mevcut değilse ya da boşsa boş bir liste başlat
-    if not os.path.exists('veri.json') or os.path.getsize('veri.json') == 0:
-        kullanicilar = []
+    if os.path.exists('veri.json'):
+        with open('veri.json', 'r') as json_file:
+            kullanicilar = json.load(json_file)
     else:
         with open('veri.json', 'r') as json_file:
             kullanicilar = json.load(json_file)

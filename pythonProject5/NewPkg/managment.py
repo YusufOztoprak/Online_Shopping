@@ -9,28 +9,29 @@ def hash_password(password):
 
 veri = [
     {
-        "username": "user1",
+        "username": "memet",
         "password": hash_password("memet123")
     },
     {
-        "username": "user2",
+        "username": "yusuf",
         "password": hash_password("yusuf123")
     }
 ]
 
-with open('veri.json', 'w') as json_file:
+with open('yönetici.json', 'w') as json_file:
     json.dump(veri, json_file)
 
 
-def cheek_paswword(username, password):
-    with open('veri.json', 'r') as json_file:
-        kullanicilar = json.load(json_file)
+def cheek(username, password):
+    with open('yönetici.json', 'r') as json_file:
+        yoneticiler = json.load(json_file)
 
-    for kullanici in kullanicilar:
-        if kullanici["username"] == username:
+    for yonetici in yoneticiler:
+        if yonetici["username"] == username:
             hashed_input_password = hash_password(password)
-            if hashed_input_password == kullanici["password"]:
+            if hashed_input_password == yonetici["password"]:
                 return True
             else:
                 return False
     return False
+
