@@ -1,14 +1,43 @@
 from pythonProject5.NewPkg import Technology
-
+import pandas as pd
 
 class Pc(Technology.Technology):
     PcList = []
 
-    def __init__(self, name, price, amount, warranty, ram, storage):
-        super().__init__(name, price, amount, warranty, ram, storage)
-        self.warranty = warranty
-        self.ram = ram
-        self.storage = storage
+
+    def __init__(self,id, name, price, amount, warranty, ram, storage):
+        super().__init__(id, name, price, amount, warranty, ram, storage)
+        self.excel_kaydet()
+
+
+    def excel_kaydet(self):
+        # Telefon nesnesini DataFrame olarak oluştur
+        yeni_veri = pd.DataFrame({
+            "id": [self.get__id()],
+            "name": [self.get__name()],
+            "price": [self.get__price()],
+            "amount": [self.get__amount()],
+            "warranty": [self.get_warranty()],
+            "ram": [self.get_ram()],
+            "storage": [self.get_storage()]
+        })
+
+        # Eğer dosya zaten varsa veriyi güncelleriz; yoksa yeni bir dosya oluştururuz
+        try:
+            # Var olan dosyayı oku ve yeni veriyle birleştir
+            mevcut_veri = pd.read_excel("Pc_urunleri.xlsx")
+            if yeni_veri["id"].iloc[0] in mevcut_veri["id"].values:
+                print("bu ürün zaten mevcut")
+                return
+
+            yeni_veri = pd.concat([mevcut_veri, yeni_veri], ignore_index=True)
+        except FileNotFoundError:
+            # Dosya yoksa hata alırız ve yeni dosya oluştururuz
+            pass
+
+        # Yeni veya güncellenmiş veriyi Excel'e kaydet
+        yeni_veri.to_excel("Pc_urunleri.xlsx", index=False)
+        print("veri başarıyla kaydedildi..")
 
     def get_warranty(self):
         return self.warranty

@@ -4,8 +4,8 @@ from pythonProject5.NewPkg.Product import Product
 class Technology(Product):
 
     listTec = []
-    def __init__(self,  name, price, amount, warranty, ram, storage):
-        super().__init__(name, price, amount)
+    def __init__(self, id, name, price, amount, warranty, ram, storage):
+        super().__init__(id, name, price, amount)
         self.warranty = warranty
         self.ram = ram
         self.storage = storage

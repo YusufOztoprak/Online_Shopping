@@ -1,14 +1,11 @@
-import uuid
-
-
 class Product:
     products = []
 
-    def __init__(self, name, price, amount):
+    def __init__(self, id, name, price, amount):
         self.__name = name
         self.__price = price
         self.__amount = amount
-        self.__Id = uuid.uuid4()
+        self.__id = id
 
     def getinfo(self, product):
         print(f"ürün ismi:{product.__name}")
@@ -31,8 +28,8 @@ class Product:
     def get__amount(self):
         return self.__amount
 
-    def get__Id(self):
-        return self.__Id
+    def get__id(self):
+        return self.__id
 
     def set__name(self, name):
         self.__name = name
@@ -43,8 +40,8 @@ class Product:
     def set__amount(self, amount):
         self.__amount = amount
 
-    def set__Id(self, Id):
-        self.__Id = Id
+    def set__id(self, id):
+        self.__id = id
 
     def printList(self):
         for product in self.products:

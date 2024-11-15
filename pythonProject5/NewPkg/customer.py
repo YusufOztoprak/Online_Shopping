@@ -17,18 +17,17 @@ class customer:
     def add_product(self, product):
         self.cart.append(product)
 
-    def remove_product(self):
-        isim = input("isim:")
-        for product in self.cart:
-            if product.get__name() == isim:
-                self.cart.remove(product)
+    def remove_product(self, sec):
+        for i, product in enumerate(self.cart, start=1):
+            if i == sec:
+                self.cart.remove(self.cart[sec-1])
             else:
-                print(f"{product.get__name()} is not in the cart.")
+                print(f" is not in the cart.")
 
     def total_price(self):
         total = 0
         for product in self.cart:
-            total += product.price
+            total += product.get__price()
         return total
 
     def clear_cart(self):
@@ -39,8 +38,8 @@ class customer:
             print("Your cart is empty.")
         else:
             print("Your cart contains:")
-            for product in self.cart:
-                print(product.get__name())
+            for i, urun in enumerate(self.cart, start=1):
+                print(f"{i}. {urun.get__name()}")
 
     def get__Id(self):
         return self.__Id
