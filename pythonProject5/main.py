@@ -44,7 +44,9 @@ def kategori_sec():
 
 
 def yonetici_girisi():
-    print("Yönetici giriş işlemleri.")
+    print("***************************************************")
+    print("           Yönetici giriş işlemleri.               ")
+    print("***************************************************")
 
     username_input = input("Kullanıcı Adı: ")
     password_input = input("Şifre: ")
@@ -113,9 +115,13 @@ def yonetici_girisi():
 
 
 def kullanici_girisi():
-    print("Kullanıcı giriş işlemleri.")
+    print("***************************************************")
+    print("             Kullanıcı giriş işlemleri.             ")
+    print("***************************************************")
     while True:
+        print(" ")
         secim = get_choice_input("Kayıtlı kullanıcı mısınız? (E/H): ", ["E", "H"])
+        print(" ")
         if secim == "H":
             new_username = input("Yeni Kullanıcı Adı: ")
             new_password = input("Yeni Şifre: ")
@@ -138,14 +144,17 @@ def kullanici_girisi():
                     islem = get_integer_input("Seçiminiz: ")
 
                     if islem == 1:
+                        print(" ")
                         kategori = kategori_sec()
                         if kategori == 1:  # Teknoloji
                             while True:
+                                print(" ")
                                 print("Alt Kategoriler:")
                                 print("1 - Telefon")
                                 print("2 - Bilgisayar")
                                 print("3 - geri")
                                 alt_kategori = get_integer_input("Seçiminiz: ")
+                                print(" ")
                                 if alt_kategori == 1:  # Telefon
                                     Phones = []
                                     try:
@@ -204,6 +213,7 @@ def kullanici_girisi():
                         print("5- geri dön")
                         while(True):
                             islem = int(input("hangi işlemi yapmak istiyorsunuz:"))
+                            print(" ")
                             if (islem == 1):
                                 customer1.show_cart()
                             elif (islem == 2):
@@ -231,6 +241,7 @@ def main():
         print("\n1 : Yönetici Girişi")
         print("2 : Kullanıcı Girişi")
         print("3 : Çıkış")
+        print(" ")
         giris = get_integer_input("Seçiniz (1-3): ")
         if giris == 1:
             yonetici_girisi()
