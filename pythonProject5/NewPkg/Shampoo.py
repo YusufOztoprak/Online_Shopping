@@ -41,7 +41,7 @@ class Shampoo(Personal_Care):
     @classmethod
     def find_by_brand(cls, brand):
         return [shampoo for shampoo in cls.Shampoo_list if shampoo.brand.lower() == brand.lower()]
-
+    @staticmethod
     def __str__(self):
         return (f"Shampoo(Name: {self.name}, Price: {self.price}, Amount: {self.amount}, "
                 f"ID: {self.Id}, Expiration Date: {self.expiration_date}, Brand: {self.brand}, "

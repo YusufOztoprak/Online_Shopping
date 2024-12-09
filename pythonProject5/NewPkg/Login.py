@@ -1,7 +1,7 @@
 import hashlib
 import json
 
-
+@staticmethod
 def hash_password(password):
     has_p = hashlib.sha256(password.encode())
     return has_p.hexdigest()
@@ -20,6 +20,7 @@ veri = [
 
 with open('veri.json', 'w') as json_file:
     json.dump(veri, json_file)
+
 
 
 def cheek_paswword(username, password):
