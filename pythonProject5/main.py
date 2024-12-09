@@ -1,5 +1,6 @@
 from pythonProject5.NewPkg.Parfume import Perfume
 from pythonProject5.NewPkg.Phone import Phone
+from pythonProject5.NewPkg.Pc import Pc
 from pythonProject5.NewPkg.customer import customer
 from pythonProject5.NewPkg.cart import Cart
 from pythonProject5.NewPkg.SignİN import add_user
@@ -57,6 +58,8 @@ def yonetici_girisi():
             if kategori == 1:  # Teknoloji
                 print("\nAlt Kategoriler:")
                 print("1 : Telefon")
+                print("2 : bilgisayar")
+
                 secim = get_integer_input("Hangi alt kategoriye ürün eklemek istiyorsunuz (1): ")
                 if secim == 1:
                     try:
@@ -78,11 +81,30 @@ def yonetici_girisi():
                         print(f"{new_phone.get__name()} başarıyla eklendi!")
                     except Exception as e:
                         print(f"Hata: {e}")
+
+                elif secim == 3:
+                    try:
+                        id = input("Ürün ID: ")
+                        name = input("bilgisayar Adı: ")
+                        price = get_integer_input("Fiyat: ")
+                        amount = get_integer_input("Miktar: ")
+                        warranty = get_integer_input("Garanti Süresi: ")
+                        ram = get_integer_input("RAM: ")
+                        storage = get_integer_input("Depolama: ")
+
+
+                        new_pc = Pc(
+                            id, name, price, amount, warranty, ram, storage
+                        )
+                        print(f"{new_pc.get__name()} başarıyla eklendi!")
+                    except Exception as e:
+                        print(f"Hata: {e}")
                 else:
                     print("Geçersiz seçim!")
             elif(kategori == 2):
                 print("\nAlt Kategoriler:")
                 print("1 : parfüm")
+                print("2 : şampuan")
                 secim = get_integer_input("Hangi alt kategoriye ürün eklemek istiyorsunuz (1): ")
                 if secim == 1:
                     try:
@@ -100,6 +122,23 @@ def yonetici_girisi():
                         new_Parfume = Perfume(
                             id, name, price, amount,expiration_date,brand,volume,gender_target,alcohol_content)
                         print(f"{new_Parfume.get__name()} başarıyla eklendi!")
+                    except Exception as e:
+                        print(f"Hata: {e}")
+                elif secim == 2:
+                    try:
+                        id = input("Ürün ID: ")
+                        name = input("ürün Adı: ")
+                        price = get_integer_input("Fiyat: ")
+                        amount = get_integer_input("Miktar: ")
+                        expiration_date = get_integer_input("son kullanma tarihi:")
+                        brand = input("marka:")
+                        paraben = get_choice_input("koruyucu içeriyor mu? (E/H): ", ["E".lower(), "H".lower()])
+                        hairType = input("saç tipini :")
+                        volume = get_integer_input("ürün hacmi:")
+
+                        new_Shampoo = Perfume(
+                            id, name, price, amount,expiration_date,brand,paraben,hairType,volume)
+                        print(f"{new_Shampoo.get__name()} başarıyla eklendi!")
                     except Exception as e:
                         print(f"Hata: {e}")
                 else:
