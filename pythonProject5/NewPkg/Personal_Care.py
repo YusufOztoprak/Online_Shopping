@@ -1,7 +1,11 @@
 from pythonProject5.NewPkg.Product import Product
-
+from abc import ABC, abstractmethod
 
 class PersonalCare(Product):
+
+    @abstractmethod
+    def calculate_discounted_price(self):
+        pass
     PersonalCare_list = []
 
     def __init__(self, id, name, price, amount, expiration_date, brand):

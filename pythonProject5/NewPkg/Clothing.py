@@ -1,6 +1,18 @@
 import Product
+from abc import ABC, abstractmethod
 
-class Clothing(Product):
+class Clothing(Product,ABC):
+
+    @abstractmethod
+    def calculate_discounted_price(self, discount_rate):
+        discounted_price = self.get_price() * (1 - discount_rate)
+        # Minimum fiyat kontrolü
+        if discounted_price < 500:
+            return 500
+        return discounted_price
+
+
+
     Clothing_List = []
     def __init__(self, name, price,amount,Id,size,cloth,color):
         super().__init__(name,price,amount,Id)

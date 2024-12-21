@@ -1,8 +1,17 @@
 from pythonProject5.NewPkg.Personal_Care import PersonalCare
 import pandas as pd
+from abc import ABC, abstractmethod
 
+class Perfume(Personal_Care):
 
-class Perfume(PersonalCare):
+    @abstractmethod
+    def calculate_discounted_price(self, discount_rate):
+        discounted_price = self.get__price() * (1 - discount_rate)
+        # Minimum fiyat kontrolü
+        if discounted_price < 1000:
+            return 1000
+        return discounted_price
+
     def __init__(self, id, name, price, amount, expiration_date, brand, volume, gender_target, alcohol_content):
         super().__init__(id, name, price, amount, expiration_date, brand)
         self.volume = volume
