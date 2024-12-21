@@ -1,4 +1,6 @@
-class Product:
+from abc import ABC, abstractmethod
+
+class Product(ABC):
     products = []
 
     def __init__(self, id, name, price, amount):
@@ -7,6 +9,9 @@ class Product:
         self.__amount = amount
         self.__id = id
 
+    @abstractmethod
+    def calculate_discounted_price(self, discount_rate):
+        pass
     def getinfo(self, product):
         print(f"ürün ismi:{product.__name}")
         print(f"ürün fiyatı:{product.__price}")
