@@ -2,7 +2,7 @@ from pythonProject5.NewPkg.Personal_Care import PersonalCare
 import pandas as pd
 from abc import ABC, abstractmethod
 
-class Perfume(PersonalCare,ABC):
+class Perfume(PersonalCare):
 
     @abstractmethod
     def calculate_discounted_price(self, discount_rate):
