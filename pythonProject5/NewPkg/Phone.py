@@ -4,15 +4,8 @@ import pandas as pd
 from abc import ABC, abstractmethod
 
 
-class Phone(Technology,ABC):
+class Phone(Technology):
 
-    @abstractmethod
-    def calculate_discounted_price(self, discount_rate):
-        discounted_price = self.get__price() * (1 - discount_rate)
-        # Minimum fiyat kontrolü
-        if discounted_price < 3000:
-            return 3000
-        return discounted_price
 
     def __init__(self, id, name, price, amount, warranty, ram, storage, fiveGsupport, numberofCameras, fastCharging):
         super().__init__(id, name, price, amount, warranty, ram, storage)
@@ -56,7 +49,13 @@ class Phone(Technology,ABC):
     """def __repr__(self):
         return f"Telefon({self.get__name()}, {self.get__price()}, {self.get__amount()}, {self.get_warranty()}, {self.get_ram()}, {self.get_storage()},{self.getFiveGSupport()},{self.getNumberOfCameras()},{self.getFastCharging()}"""
 
-
+    @abstractmethod
+    def calculate_discounted_price(self, discount_rate):
+        discounted_price = self.get__price() * (1 - discount_rate)
+        # Minimum fiyat kontrolü
+        if discounted_price < 3000:
+            return 3000
+        return discounted_price
     def getFiveGSupport(self):
         return self.fiveGsupport
 

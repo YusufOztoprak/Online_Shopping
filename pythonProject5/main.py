@@ -1,6 +1,7 @@
 from pythonProject5.NewPkg.Parfume import Perfume
 from pythonProject5.NewPkg.Phone import Phone
 from pythonProject5.NewPkg.Pc import Pc
+from pythonProject5.NewPkg.Shampoo import Shampoo
 from pythonProject5.NewPkg.customer import customer
 from pythonProject5.NewPkg.cart import Cart
 from pythonProject5.NewPkg.SignİN import add_user
@@ -240,7 +241,7 @@ def kullanici_girisi():
                             print("2 - şampuan")
                             print("3 - geri")
                             alt_kategori = get_integer_input("Seçiminiz: ")
-                            if alt_kategori == 1:  # Telefon
+                            if alt_kategori == 1:
                                 Perfumes = []
                                 try:
                                     df = pd.read_excel("Parfume_urunleri.xlsx")
@@ -266,21 +267,25 @@ def kullanici_girisi():
                                 try:
                                     df = pd.read_excel("Sampuan_urunleri.xlsx")
                                     for _, row in df.iterrows():
-                                        parfum = Perfume(row["id"], row["name"], row["price"], row["amount"],
+                                        x = Shampoo(row["id"], row["name"], row["price"], row["amount"],
+
                                                          row["expiration_date"], row["brand"], row["Pareben"],
                                                          row["HairType"], row["Volume"])
-                                        Perfumes.append(parfum)
+                                        sampuanList.append(x)
 
-                                    for i, parfum in enumerate(Perfumes, start=1):
-                                        print(f"{i}. {parfum.get__name()}")
+                                    for i, x in enumerate(sampuanList, start=1):
+                                        print(f"{i}. {x.get__name()}")
                                     secim = get_integer_input("Sepete eklemek istediğiniz ürünü seçiniz: ")
-                                    if 1 <= secim <= len(Perfumes):
-                                        customer1.add_product(Perfumes[secim - 1])
+                                    if 1 <= secim <= len(sampuanList):
+                                        customer1.add_product(sampuanList[secim - 1])
                                         print("Ürün sepete eklendi!")
                                     else:
                                         print("Geçersiz seçim!")
                                 except FileNotFoundError:
                                     print("Ürün dosyası bulunamadı!")
+                            elif alt_kategori == 3:
+                                break
+
 
                     elif islem == 2:
                         customer1.show_cart()
@@ -289,7 +294,8 @@ def kullanici_girisi():
                         print("2-sepetten ürün sil:")
                         print("3-toplam tutarı göster:")
                         print("4-sepeti temizle")
-                        print("5- geri dön")
+                        print("5-sepeti onayla")
+                        print("6- geri dön")
                         while(True):
                             islem = int(input("hangi işlemi yapmak istiyorsunuz:"))
                             print(" ")
@@ -303,7 +309,12 @@ def kullanici_girisi():
                                 print(customer1.total_price())
                             elif (islem == 4):
                                 customer1.clear_cart()
-                            elif (islem == 5):
+                            elif islem == 5:
+                                soru = input("sepeti onaylamak istiyor musunuz?")
+                                if soru.lower() == "evet":
+                                    print("siparişiniz onaylanmışıtır toplam tutar:", customer1.total_price())
+                                    customer1.clear_cart()
+                            elif (islem == 6):
                                 break
                     elif islem == 3:
                         print("Çıkış yapılıyor...")

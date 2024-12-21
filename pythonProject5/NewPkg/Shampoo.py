@@ -1,6 +1,8 @@
-import Personal_Care
+from abc import abstractmethod
+
+from pythonProject5.NewPkg.Personal_Care import PersonalCare
 import pandas as pd
-class Shampoo(Personal_Care):
+class Shampoo(PersonalCare):
 
     @abstractmethod
     def calculate_discounted_price(self, discount_rate):
