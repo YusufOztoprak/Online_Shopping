@@ -8,190 +8,179 @@ from pythonProject5.NewPkg.Login import cheek_paswword
 from pythonProject5.NewPkg.managment import cheek
 
 import pandas as pd
-from colorama import Fore, Style, init
 
-# Colorama'yı başlatıyoruz
-init(autoreset=True)
 
 def get_integer_input(prompt):
     """Kullanıcıdan tam sayı almak için güvenli giriş."""
     while True:
         try:
-            return int(input(Fore.CYAN + prompt))
+            return int(input(prompt))
         except ValueError:
-            print(Fore.RED + "Hatalı giriş! Lütfen bir sayı giriniz.")
+            print("Hatalı giriş! Lütfen bir sayı giriniz.")
+
 
 def get_choice_input(prompt, valid_choices):
     """Kullanıcıdan belirli bir seçim almak için güvenli giriş."""
     while True:
-        choice = input(Fore.YELLOW + prompt).strip()
+        choice = input(prompt).strip()
         if choice in valid_choices:
             return choice
         else:
-            print(Fore.RED + f"Hatalı giriş! Lütfen şu seçeneklerden birini seçiniz: {', '.join(valid_choices)}")
+            print(f"Hatalı giriş! Lütfen şu seçeneklerden birini seçiniz: {', '.join(valid_choices)}")
+
 
 def kategori_sec():
-    print(Fore.MAGENTA + "KATEGORİLER")
+    print("KATEGORİLER")
     while True:
-        print(Fore.GREEN + "\nKategori Seçiniz:")
-        print(Fore.BLUE + "1 : Teknoloji")
-        print(Fore.BLUE + "2 : Kişisel Bakım")
-        print(Fore.BLUE + "3 : Giyim")
-        print(Fore.BLUE + "4 : Çıkış")
-        kategori = get_integer_input(Fore.CYAN + "Seçiminiz (1-4): ")
+        print("\nKategori Seçiniz:")
+        print("1 : Teknoloji")
+        print("2 : Kişisel Bakım")
+        print("3 : Giyim")
+        print("4: çıkış")
+        kategori = get_integer_input("Seçiminiz (1-3): ")
         if kategori in [1, 2, 3, 4]:
             return kategori
         else:
-            print(Fore.RED + "Geçersiz kategori! Lütfen 1, 2, 3 veya 4 seçiniz.")
-
+            print("Geçersiz kategori! Lütfen 1, 2 veya 3 seçiniz.")
 
 
 def yonetici_girisi():
-    print(Fore.MAGENTA + "***************************************************")
-    print(Fore.YELLOW + "           Yönetici giriş işlemleri.               ")
-    print(Fore.MAGENTA + "***************************************************")
+    print("***************************************************")
+    print("           Yönetici giriş işlemleri.               ")
+    print("***************************************************")
 
-    username_input = input(Fore.CYAN + "Kullanıcı Adı: ")
-    password_input = input(Fore.CYAN + "Şifre: ")
-
+    username_input = input("Kullanıcı Adı: ")
+    password_input = input("Şifre: ")
     if cheek(username_input, password_input):
-        print(Fore.GREEN + "Yönetici girişi başarılı!")
-        while True:
+        print("Yönetici girişi başarılı!")
+        while(True):
             kategori = kategori_sec()
             if kategori == 1:  # Teknoloji
-                print(Fore.BLUE + "\nAlt Kategoriler:")
-                print(Fore.CYAN + "1 : Telefon")
-                print(Fore.CYAN + "2 : Bilgisayar")
+                print("\nAlt Kategoriler:")
+                print("1 : Telefon")
+                print("2 : bilgisayar")
 
-                secim = get_integer_input(Fore.CYAN + "Hangi alt kategoriye ürün eklemek istiyorsunuz (1): ")
+                secim = get_integer_input("Hangi alt kategoriye ürün eklemek istiyorsunuz (1): ")
                 if secim == 1:
                     try:
-                        id = input(Fore.YELLOW + "Ürün ID: ")
-                        name = input(Fore.YELLOW + "Telefon Adı: ")
-                        price = get_integer_input(Fore.YELLOW + "Fiyat: ")
-                        amount = get_integer_input(Fore.YELLOW + "Miktar: ")
-                        warranty = get_integer_input(Fore.YELLOW + "Garanti Süresi: ")
-                        ram = get_integer_input(Fore.YELLOW + "RAM: ")
-                        storage = get_integer_input(Fore.YELLOW + "Depolama: ")
-                        fiveGsupport = get_choice_input(
-                            Fore.YELLOW + "5G Desteği Var mı? (E/H): ", ["e", "h"]
-                        )
-                        numberofCameras = get_integer_input(Fore.YELLOW + "Kamera Megapiksel: ")
-                        fastCharging = get_choice_input(
-                            Fore.YELLOW + "Hızlı Şarj Desteği Var mı? (E/H): ", ["e", "h"]
-                        )
+                        id = input("Ürün ID: ")
+                        name = input("Telefon Adı: ")
+                        price = get_integer_input("Fiyat: ")
+                        amount = get_integer_input("Miktar: ")
+                        warranty = get_integer_input("Garanti Süresi: ")
+                        ram = get_integer_input("RAM: ")
+                        storage = get_integer_input("Depolama: ")
+                        fiveGsupport = get_choice_input("5G Desteği Var mı? (E/H): ", ["E".lower(), "H".lower()])
+                        numberofCameras = get_integer_input("Kamera Megapiksel: ")
+                        fastCharging = get_choice_input("Hızlı Şarj Desteği Var mı? (E/H): ", ["E".lower(), "H".lower()])
 
                         new_phone = Phone(
                             id, name, price, amount, warranty, ram, storage,
                             fiveGsupport, numberofCameras, fastCharging
                         )
-                        print(Fore.GREEN + f"{new_phone.get__name()} başarıyla eklendi!")
+                        print(f"{new_phone.get__name()} başarıyla eklendi!")
                     except Exception as e:
-                        print(Fore.RED + f"Hata: {e}")
+                        print(f"Hata: {e}")
 
-                elif secim == 2:
+                elif secim == 3:
                     try:
-                        id = input(Fore.YELLOW + "Ürün ID: ")
-                        name = input(Fore.YELLOW + "Bilgisayar Adı: ")
-                        price = get_integer_input(Fore.YELLOW + "Fiyat: ")
-                        amount = get_integer_input(Fore.YELLOW + "Miktar: ")
-                        warranty = get_integer_input(Fore.YELLOW + "Garanti Süresi: ")
-                        ram = get_integer_input(Fore.YELLOW + "RAM: ")
-                        storage = get_integer_input(Fore.YELLOW + "Depolama: ")
+                        id = input("Ürün ID: ")
+                        name = input("bilgisayar Adı: ")
+                        price = get_integer_input("Fiyat: ")
+                        amount = get_integer_input("Miktar: ")
+                        warranty = get_integer_input("Garanti Süresi: ")
+                        ram = get_integer_input("RAM: ")
+                        storage = get_integer_input("Depolama: ")
 
-                        new_pc = Pc(id, name, price, amount, warranty, ram, storage)
-                        print(Fore.GREEN + f"{new_pc.get__name()} başarıyla eklendi!")
+
+                        new_pc = Pc(
+                            id, name, price, amount, warranty, ram, storage
+                        )
+                        print(f"{new_pc.get__name()} başarıyla eklendi!")
                     except Exception as e:
-                        print(Fore.RED + f"Hata: {e}")
+                        print(f"Hata: {e}")
                 else:
-                    print(Fore.RED + "Geçersiz seçim!")
-            elif kategori == 2:
-                print(Fore.BLUE + "\nAlt Kategoriler:")
-                print(Fore.CYAN + "1 : Parfüm")
-                print(Fore.CYAN + "2 : Şampuan")
-
-                secim = get_integer_input(Fore.CYAN + "Hangi alt kategoriye ürün eklemek istiyorsunuz (1): ")
+                    print("Geçersiz seçim!")
+            elif(kategori == 2):
+                print("\nAlt Kategoriler:")
+                print("1 : parfüm")
+                print("2 : şampuan")
+                secim = get_integer_input("Hangi alt kategoriye ürün eklemek istiyorsunuz (1): ")
                 if secim == 1:
                     try:
-                        id = input(Fore.YELLOW + "Ürün ID: ")
-                        name = input(Fore.YELLOW + "Ürün Adı: ")
-                        price = get_integer_input(Fore.YELLOW + "Fiyat: ")
-                        amount = get_integer_input(Fore.YELLOW + "Miktar: ")
-                        expiration_date = input(Fore.YELLOW + "Son Kullanma Tarihi: ")
-                        brand = input(Fore.YELLOW + "Marka: ")
-                        volume = get_integer_input(Fore.YELLOW + "Ürün Hacmi: ")
-                        gender_target = get_choice_input(
-                            Fore.YELLOW + "Cinsiyet Hedefi (E/K): ", ["e", "k"]
-                        )
-                        alcohol_content = get_choice_input(
-                            Fore.YELLOW + "Alkol Durumu (içerir/içermez): ", ["içerir", "içermez"]
-                        )
+                        id = input("Ürün ID: ")
+                        name = input("ürün Adı: ")
+                        price = get_integer_input("Fiyat: ")
+                        amount = get_integer_input("Miktar: ")
+                        expiration_date = get_integer_input("son kullanma tarihi:")
+                        brand = input("marka:")
+                        volume = get_integer_input("ürün hacmi:")
+                        gender_target = get_choice_input("cinsiyet hedefi(E,K): ", ["E".lower(), "k".lower()])
+                        alcohol_content =  get_choice_input("alkol durumu:(içerir, içermez)",["içerir".lower(), "içermez".lower()])
 
-                        new_perfume = Perfume(
-                            id, name, price, amount, expiration_date, brand, volume, gender_target, alcohol_content
-                        )
-                        print(Fore.GREEN + f"{new_perfume.get__name()} başarıyla eklendi!")
+
+                        new_Parfume = Perfume(
+                            id, name, price, amount,expiration_date,brand,volume,gender_target,alcohol_content)
+                        print(f"{new_Parfume.get__name()} başarıyla eklendi!")
                     except Exception as e:
-                        print(Fore.RED + f"Hata: {e}")
+                        print(f"Hata: {e}")
                 elif secim == 2:
                     try:
-                        id = input(Fore.YELLOW + "Ürün ID: ")
-                        name = input(Fore.YELLOW + "Ürün Adı: ")
-                        price = get_integer_input(Fore.YELLOW + "Fiyat: ")
-                        amount = get_integer_input(Fore.YELLOW + "Miktar: ")
-                        expiration_date = input(Fore.YELLOW + "Son Kullanma Tarihi: ")
-                        brand = input(Fore.YELLOW + "Marka: ")
-                        paraben = get_choice_input(
-                            Fore.YELLOW + "Koruyucu İçeriyor mu? (E/H): ", ["e", "h"]
-                        )
-                        hair_type = input(Fore.YELLOW + "Saç Tipi: ")
-                        volume = get_integer_input(Fore.YELLOW + "Ürün Hacmi: ")
+                        id = input("Ürün ID: ")
+                        name = input("ürün Adı: ")
+                        price = get_integer_input("Fiyat: ")
+                        amount = get_integer_input("Miktar: ")
+                        expiration_date = get_integer_input("son kullanma tarihi:")
+                        brand = input("marka:")
+                        paraben = get_choice_input("koruyucu içeriyor mu? (E/H): ", ["E".lower(), "H".lower()])
+                        hairType = input("saç tipini :")
+                        volume = get_integer_input("ürün hacmi:")
 
-                        new_shampoo = Shampoo(
-                            id, name, price, amount, expiration_date, brand, paraben, hair_type, volume
-                        )
-                        print(Fore.GREEN + f"{new_shampoo.get__name()} başarıyla eklendi!")
+                        new_Shampoo = Perfume(
+                            id, name, price, amount,expiration_date,brand,paraben,hairType,volume)
+                        print(f"{new_Shampoo.get__name()} başarıyla eklendi!")
                     except Exception as e:
-                        print(Fore.RED + f"Hata: {e}")
+                        print(f"Hata: {e}")
                 else:
-                    print(Fore.RED + "Geçersiz seçim!")
-            elif kategori == 3:
+                     print("Geçersiz seçim!")
+            elif(kategori == 3):
                 pass
             else:
                 break
+
     else:
-        print(Fore.RED + "Yönetici girişi başarısız! Tekrar deneyiniz.")
+        print("Yönetici girişi başarısız! Tekrar deneyiniz.")
 
 
 
 def kullanici_girisi():
-    print(Fore.MAGENTA + "***************************************************")
-    print(Fore.YELLOW + "             Kullanıcı giriş işlemleri.             ")
-    print(Fore.MAGENTA + "***************************************************")
+    print("***************************************************")
+    print("             Kullanıcı giriş işlemleri.             ")
+    print("***************************************************")
     while True:
         print(" ")
-        secim = get_choice_input(Fore.CYAN + "Kayıtlı kullanıcı mısınız? (E/H): ", ["E", "H"])
+        secim = get_choice_input("Kayıtlı kullanıcı mısınız? (E/H): ", ["E", "H"])
         print(" ")
         if secim == "H":
-            new_username = input(Fore.YELLOW + "Yeni Kullanıcı Adı: ")
-            new_password = input(Fore.YELLOW + "Yeni Şifre: ")
+            new_username = input("Yeni Kullanıcı Adı: ")
+            new_password = input("Yeni Şifre: ")
             add_user(new_username, new_password)
-            print(Fore.GREEN + "Kullanıcı başarıyla eklendi!")
+            print("Kullanıcı başarıyla eklendi!")
             break
         elif secim == "E":
-            username_input = input(Fore.CYAN + "Kullanıcı Adı: ")
-            password_input = input(Fore.CYAN + "Şifre: ")
+            username_input = input("Kullanıcı Adı: ")
+            password_input = input("Şifre: ")
 
             if cheek_paswword(username_input, password_input):
-                print(Fore.GREEN + "Kullanıcı girişi başarılı!")
+                print("Kullanıcı girişi başarılı!")
                 customer1 = customer("Ahmet", "ahmet@gmail.com", "Malatya", "085067055", [])
 
                 while True:
-                    print(Fore.BLUE + "\nİşlem Seçiniz:")
-                    print(Fore.CYAN + "1 : Kategori Seçiniz")
-                    print(Fore.CYAN + "2 : Sepete Git")
-                    print(Fore.RED + "3 : Çıkış")
-                    islem = get_integer_input(Fore.CYAN + "Seçiminiz: ")
+                    print("\nİşlem Seçiniz:")
+                    print("1 : Kategori Seçiniz")
+                    print("2 : Sepete Git")
+                    print("3 : Çıkış")
+                    islem = get_integer_input("Seçiminiz: ")
 
                     if islem == 1:
                         print(" ")
@@ -199,61 +188,59 @@ def kullanici_girisi():
                         if kategori == 1:  # Teknoloji
                             while True:
                                 print(" ")
-                                print(Fore.YELLOW + "Alt Kategoriler:")
-                                print(Fore.CYAN + "1 - Telefon")
-                                print(Fore.CYAN + "2 - Bilgisayar")
-                                print(Fore.RED + "3 - Geri")
-                                alt_kategori = get_integer_input(Fore.CYAN + "Seçiminiz: ")
+                                print("Alt Kategoriler:")
+                                print("1 - Telefon")
+                                print("2 - Bilgisayar")
+                                print("3 - geri")
+                                alt_kategori = get_integer_input("Seçiminiz: ")
                                 print(" ")
-                                if alt_kategori == 1:
+                                if alt_kategori == 1:  # Telefon
                                     Phones = []
                                     try:
                                         df = pd.read_excel("telefon_urunleri.xlsx")
                                         for _, row in df.iterrows():
-                                            telefon = Phone(row["id"], row["name"], row["price"], row["amount"],
-                                                            row["warranty"], row["ram"], row["storage"],
-                                                            row["fiveGsupport"], row["numberOfcameras"],
-                                                            row["fastCharging"])
+                                            telefon = Phone(row["id"], row["name"], row["price"], row["amount"], row["warranty"], row["ram"], row["storage"], row["fiveGsupport"], row["numberOfcameras"], row["fastCharging"]
+                                            )
                                             Phones.append(telefon)
 
                                         for i, phone in enumerate(Phones, start=1):
-                                            print(Fore.YELLOW + f"{i}. {phone.get__name()}")
-                                        secim = get_integer_input(Fore.CYAN + "Sepete eklemek istediğiniz ürünü seçiniz: ")
+                                            print(f"{i}. {phone.get__name()}")
+                                        secim = get_integer_input("Sepete eklemek istediğiniz ürünü seçiniz: ")
                                         if 1 <= secim <= len(Phones):
                                             customer1.add_product(Phones[secim - 1])
-                                            print(Fore.GREEN + "Ürün sepete eklendi!")
+                                            print("Ürün sepete eklendi!")
                                         else:
-                                            print(Fore.RED + "Geçersiz seçim!")
+                                            print("Geçersiz seçim!")
                                     except FileNotFoundError:
-                                        print(Fore.RED + "Ürün dosyası bulunamadı!")
+                                        print("Ürün dosyası bulunamadı!")
                                 elif alt_kategori == 2:
                                     Pclist = []
                                     try:
                                         df = pd.read_excel("Pc_urunleri.xlsx")
                                         for _, row in df.iterrows():
                                             pc = Pc(row["id"], row["name"], row["price"], row["amount"],
-                                                    row["warranty"], row["ram"], row["storage"])
+                                                            row["warranty"], row["ram"], row["storage"])
                                             Pclist.append(pc)
 
                                         for i, pc in enumerate(Pclist, start=1):
-                                            print(Fore.YELLOW + f"{i}. {pc.get__name()}")
-                                        secim = get_integer_input(Fore.CYAN + "Sepete eklemek istediğiniz ürünü seçiniz: ")
+                                            print(f"{i}. {pc.get__name()}")
+                                        secim = get_integer_input("Sepete eklemek istediğiniz ürünü seçiniz: ")
                                         if 1 <= secim <= len(Pclist):
                                             customer1.add_product(Pclist[secim - 1])
-                                            print(Fore.GREEN + "Ürün sepete eklendi!")
+                                            print("Ürün sepete eklendi!")
                                         else:
-                                            print(Fore.RED + "Geçersiz seçim!")
+                                            print("Geçersiz seçim!")
                                     except FileNotFoundError:
-                                        print(Fore.RED + "Ürün dosyası bulunamadı!")
+                                        print("Ürün dosyası bulunamadı!")
                                 elif alt_kategori == 3:
                                     break
-                        elif kategori == 2:
-                            print(Fore.YELLOW + "Alt Kategoriler:")
-                            print(Fore.CYAN + "1 - Parfüm")
-                            print(Fore.CYAN + "2 - Şampuan")
-                            print(Fore.RED + "3 - Geri")
-                            alt_kategori = get_integer_input(Fore.CYAN + "Seçiminiz: ")
-                            if alt_kategori == 1:
+                        elif (kategori == 2):
+                            print("Alt Kategoriler:")
+                            print("1 - parfüm")
+                            print("2 - şampuan")
+                            print("3 - geri")
+                            alt_kategori = get_integer_input("Seçiminiz: ")
+                            if alt_kategori == 1:  # Telefon
                                 Perfumes = []
                                 try:
                                     df = pd.read_excel("Parfume_urunleri.xlsx")
@@ -264,24 +251,68 @@ def kullanici_girisi():
                                         Perfumes.append(parfum)
 
                                     for i, parfum in enumerate(Perfumes, start=1):
-                                        print(Fore.YELLOW + f"{i}. {parfum.get__name()}")
-                                    secim = get_integer_input(Fore.CYAN + "Sepete eklemek istediğiniz ürünü seçiniz: ")
+                                        print(f"{i}. {parfum.get__name()}")
+                                    secim = get_integer_input("Sepete eklemek istediğiniz ürünü seçiniz: ")
                                     if 1 <= secim <= len(Perfumes):
                                         customer1.add_product(Perfumes[secim - 1])
-                                        print(Fore.GREEN + "Ürün sepete eklendi!")
+                                        print("Ürün sepete eklendi!")
                                     else:
-                                        print(Fore.RED + "Geçersiz seçim!")
+                                        print("Geçersiz seçim!")
                                 except FileNotFoundError:
-                                    print(Fore.RED + "Ürün dosyası bulunamadı!")
+                                    print("Ürün dosyası bulunamadı!")
+
+                            elif alt_kategori == 2:
+                                sampuanList = []
+                                try:
+                                    df = pd.read_excel("Sampuan_urunleri.xlsx")
+                                    for _, row in df.iterrows():
+                                        parfum = Perfume(row["id"], row["name"], row["price"], row["amount"],
+                                                         row["expiration_date"], row["brand"], row["Pareben"],
+                                                         row["HairType"], row["Volume"])
+                                        Perfumes.append(parfum)
+
+                                    for i, parfum in enumerate(Perfumes, start=1):
+                                        print(f"{i}. {parfum.get__name()}")
+                                    secim = get_integer_input("Sepete eklemek istediğiniz ürünü seçiniz: ")
+                                    if 1 <= secim <= len(Perfumes):
+                                        customer1.add_product(Perfumes[secim - 1])
+                                        print("Ürün sepete eklendi!")
+                                    else:
+                                        print("Geçersiz seçim!")
+                                except FileNotFoundError:
+                                    print("Ürün dosyası bulunamadı!")
+
                     elif islem == 2:
-                        print(Fore.BLUE + "Sepet işlemleri...")
+                        customer1.show_cart()
+                        print("işlemler:")
+                        print("1-sepeti göster:")
+                        print("2-sepetten ürün sil:")
+                        print("3-toplam tutarı göster:")
+                        print("4-sepeti temizle")
+                        print("5- geri dön")
+                        while(True):
+                            islem = int(input("hangi işlemi yapmak istiyorsunuz:"))
+                            print(" ")
+                            if (islem == 1):
+                                customer1.show_cart()
+                            elif (islem == 2):
+                                customer1.show_cart()
+                                sec = int(input("silmek istediğiniz ürünün numarası"))
+                                customer1.remove_product(sec)
+                            elif (islem == 3):
+                                print(customer1.total_price())
+                            elif (islem == 4):
+                                customer1.clear_cart()
+                            elif (islem == 5):
+                                break
                     elif islem == 3:
-                        print(Fore.RED + "Çıkış yapılıyor...")
+                        print("Çıkış yapılıyor...")
                         break
                     else:
-                        print(Fore.RED + "Geçersiz seçim!")
+                        print("Geçersiz seçim!")
+                break
             else:
-                print(Fore.RED + "Giriş yapılamadı. Kullanıcı adı veya şifre hatalı! Tekrar deneyiniz.")
+                print("Giriş yapılamadı. Kullanıcı adı veya şifre hatalı! Tekrar deneyiniz.")
 
 
 def main():
