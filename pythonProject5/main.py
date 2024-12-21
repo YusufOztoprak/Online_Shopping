@@ -214,13 +214,31 @@ def kullanici_girisi():
                                     except FileNotFoundError:
                                         print("Ürün dosyası bulunamadı!")
                                 elif alt_kategori == 2:
-                                    pass
+                                    Pclist = []
+                                    try:
+                                        df = pd.read_excel("Pc_urunleri.xlsx")
+                                        for _, row in df.iterrows():
+                                            pc = Pc(row["id"], row["name"], row["price"], row["amount"],
+                                                            row["warranty"], row["ram"], row["storage"])
+                                            Pclist.append(pc)
+
+                                        for i, pc in enumerate(Pclist, start=1):
+                                            print(f"{i}. {pc.get__name()}")
+                                        secim = get_integer_input("Sepete eklemek istediğiniz ürünü seçiniz: ")
+                                        if 1 <= secim <= len(Pclist):
+                                            customer1.add_product(Pclist[secim - 1])
+                                            print("Ürün sepete eklendi!")
+                                        else:
+                                            print("Geçersiz seçim!")
+                                    except FileNotFoundError:
+                                        print("Ürün dosyası bulunamadı!")
                                 elif alt_kategori == 3:
                                     break
                         elif (kategori == 2):
                             print("Alt Kategoriler:")
                             print("1 - parfüm")
                             print("2 - şampuan")
+                            print("3 - geri")
                             alt_kategori = get_integer_input("Seçiminiz: ")
                             if alt_kategori == 1:  # Telefon
                                 Perfumes = []
@@ -242,6 +260,28 @@ def kullanici_girisi():
                                         print("Geçersiz seçim!")
                                 except FileNotFoundError:
                                     print("Ürün dosyası bulunamadı!")
+
+                            elif alt_kategori == 2:
+                                sampuanList = []
+                                try:
+                                    df = pd.read_excel("Sampuan_urunleri.xlsx")
+                                    for _, row in df.iterrows():
+                                        parfum = Perfume(row["id"], row["name"], row["price"], row["amount"],
+                                                         row["expiration_date"], row["brand"], row["Pareben"],
+                                                         row["HairType"], row["Volume"])
+                                        Perfumes.append(parfum)
+
+                                    for i, parfum in enumerate(Perfumes, start=1):
+                                        print(f"{i}. {parfum.get__name()}")
+                                    secim = get_integer_input("Sepete eklemek istediğiniz ürünü seçiniz: ")
+                                    if 1 <= secim <= len(Perfumes):
+                                        customer1.add_product(Perfumes[secim - 1])
+                                        print("Ürün sepete eklendi!")
+                                    else:
+                                        print("Geçersiz seçim!")
+                                except FileNotFoundError:
+                                    print("Ürün dosyası bulunamadı!")
+
                     elif islem == 2:
                         customer1.show_cart()
                         print("işlemler:")

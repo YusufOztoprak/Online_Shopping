@@ -21,7 +21,7 @@ class Shampoo(Personal_Care):
             "brand": [self.get_brand()],
             "paraben": [self.getParaben()],
             "hairType": [self.getHairType()],
-            "volume": [self.getHairType()],
+            "volume": [self.getVolume()],
 
         })
 
