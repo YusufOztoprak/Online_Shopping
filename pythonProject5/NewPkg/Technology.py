@@ -1,7 +1,12 @@
 from pythonProject5.NewPkg.Product import Product
-
+from abc import ABC,abstractmethod
 
 class Technology(Product):
+
+
+    @abstractmethod
+    def calculate_discounted_price(self, discount_rate):
+        pass
 
     listTec = []
     def __init__(self, id, name, price, amount, warranty, ram, storage):
