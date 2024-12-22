@@ -2,6 +2,7 @@ from abc import abstractmethod
 
 from pythonProject5.NewPkg.Personal_Care import PersonalCare
 import pandas as pd
+from colorama import Fore, Style
 class Shampoo(PersonalCare):
 
     @abstractmethod
@@ -41,7 +42,6 @@ class Shampoo(PersonalCare):
             # Var olan dosyayı oku ve yeni veriyle birleştir
             mevcut_veri = pd.read_excel("sampuan_urunleri.xlsx")
             if yeni_veri["id"].iloc[0] in mevcut_veri["id"].values:
-                print("bu ürün zaten mevcut")
                 return
 
             yeni_veri = pd.concat([mevcut_veri, yeni_veri], ignore_index=True)

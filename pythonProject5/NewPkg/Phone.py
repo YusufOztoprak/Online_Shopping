@@ -82,3 +82,12 @@ class Phone(Technology):
     def ListPhones(self):
         for i in self.Phones:
             print(i.getName(), i.getPrice())
+
+    def getinfo(self):
+        super().getinfo()
+        print(f"{Fore.BLUE}ürün 5G destekliyor mu?:{Style.RESET_ALL} ", self.getFiveGSupport())
+        print(f"{Fore.BLUE}ürünün kamera sayısı:{Style.RESET_ALL} ", self.getNumberOfCameras())
+        print(f"{Fore.BLUE}ürün hızlı şarjı destekliyor mu?:{Style.RESET_ALL}",self.getFastCharging())
+        print(" ")
+
+

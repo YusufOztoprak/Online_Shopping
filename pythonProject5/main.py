@@ -246,8 +246,10 @@ def kullanici_girisi():
                                                     row["warranty"], row["ram"], row["storage"])
                                             Pclist.append(pc)
 
-                                        for i, pc in enumerate(Pclist, start=1):
-                                            print(Fore.CYAN + f"{i}. {pc.get__name()}" + Style.RESET_ALL)
+                                        for i, pc in enumerate(Phones, start=1):
+                                            print(Fore.CYAN + f"{i}. ", end="")
+                                            pc.getinfo()  # Metod zaten bilgileri yazdırıyor
+                                            print(Style.RESET_ALL)
                                         secim = get_integer_input(Fore.YELLOW +
                                                                   "Sepete eklemek istediğiniz ürünü seçiniz: " +
                                                                   Style.RESET_ALL)
@@ -321,6 +323,7 @@ def kullanici_girisi():
 
                     elif islem == 2:
                         customer1.show_cart()
+
                         print(Fore.YELLOW + "İşlemler:" + Style.RESET_ALL)
                         print(Fore.CYAN + "1 - Sepeti Göster" + Style.RESET_ALL)
                         print(Fore.CYAN + "2 - Sepetten Ürün Sil" + Style.RESET_ALL)
@@ -359,7 +362,7 @@ def kullanici_girisi():
 
                                         if order_confirmation == "Order has been completed.":
                                             # Step 4: Sipariş tamamlandıktan sonra siparişi müşteri geçmişine ekleyelim
-                                            """customer1.add_to_order_history(order)"""
+                                            customer1.add_to_order_history(order)
                                             print("Your order has been added to your order history.")
 
                                             # Step 5: Sepeti temizleyelim
