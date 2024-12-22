@@ -1,6 +1,7 @@
 from pythonProject5.NewPkg.Parfume import Perfume
 from pythonProject5.NewPkg.Phone import Phone
 from pythonProject5.NewPkg.Pc import Pc
+from pythonProject5.NewPkg.Shampoo import Shampoo
 from pythonProject5.NewPkg.customer import customer
 from pythonProject5.NewPkg.cart import Cart
 from pythonProject5.NewPkg.SignİN import add_user
@@ -59,99 +60,109 @@ def yonetici_girisi():
     if cheek(username_input, password_input):
         print(f"{Fore.GREEN}Yönetici girişi başarılı!{Style.RESET_ALL}")
         while True:
-            kategori = kategori_sec()
-            if kategori == 1:  # Teknoloji
-                print(f"{Fore.YELLOW}\nAlt Kategoriler:{Style.RESET_ALL}")
-                print(f"{Fore.YELLOW}1 : Telefon{Style.RESET_ALL}")
-                print(f"{Fore.YELLOW}2 : Bilgisayar{Style.RESET_ALL}")
+            while True:
+                kategori = kategori_sec()
+                if kategori == 1:  # Teknoloji
+                    print(f"{Fore.YELLOW}\nAlt Kategoriler:{Style.RESET_ALL}")
+                    print(f"{Fore.YELLOW}1 : Telefon{Style.RESET_ALL}")
+                    print(f"{Fore.YELLOW}2 : Bilgisayar{Style.RESET_ALL}")
+                    print(f"{Fore.YELLOW}3 : geri{Style.RESET_ALL}")
 
-                secim = get_integer_input(f"{Fore.BLUE}Hangi alt kategoriye ürün eklemek istiyorsunuz (1): {Style.RESET_ALL}")
-                if secim == 1:
-                    try:
-                        id = input(f"{Fore.BLUE}Ürün ID: {Style.RESET_ALL}")
-                        name = input(f"{Fore.BLUE}Telefon Adı: {Style.RESET_ALL}")
-                        price = get_integer_input(f"{Fore.BLUE}Fiyat: {Style.RESET_ALL}")
-                        amount = get_integer_input(f"{Fore.BLUE}Miktar: {Style.RESET_ALL}")
-                        warranty = get_integer_input(f"{Fore.BLUE}Garanti Süresi: {Style.RESET_ALL}")
-                        ram = get_integer_input(f"{Fore.BLUE}RAM: {Style.RESET_ALL}")
-                        storage = get_integer_input(f"{Fore.BLUE}Depolama: {Style.RESET_ALL}")
-                        fiveGsupport = get_choice_input(f"{Fore.BLUE}5G Desteği Var mı? (E/H): {Style.RESET_ALL}", ["e", "h"])
-                        numberofCameras = get_integer_input(f"{Fore.BLUE}Kamera Megapiksel: {Style.RESET_ALL}")
-                        fastCharging = get_choice_input(f"{Fore.BLUE}Hızlı Şarj Desteği Var mı? (E/H): {Style.RESET_ALL}", ["e", "h"])
+                    secim = get_integer_input(f"{Fore.BLUE}Hangi alt kategoriye ürün eklemek istiyorsunuz (1-3): {Style.RESET_ALL}")
+                    if secim == 1:
+                        try:
+                            id = input(f"{Fore.BLUE}Ürün ID: {Style.RESET_ALL}")
+                            name = input(f"{Fore.BLUE}Telefon Adı: {Style.RESET_ALL}")
+                            price = get_integer_input(f"{Fore.BLUE}Fiyat: {Style.RESET_ALL}")
+                            amount = get_integer_input(f"{Fore.BLUE}Miktar: {Style.RESET_ALL}")
+                            warranty = get_integer_input(f"{Fore.BLUE}Garanti Süresi: {Style.RESET_ALL}")
+                            ram = get_integer_input(f"{Fore.BLUE}RAM: {Style.RESET_ALL}")
+                            storage = get_integer_input(f"{Fore.BLUE}Depolama: {Style.RESET_ALL}")
+                            fiveGsupport = get_choice_input(f"{Fore.BLUE}5G Desteği Var mı? (E/H): {Style.RESET_ALL}", ["e", "h"])
+                            numberofCameras = get_integer_input(f"{Fore.BLUE}Kamera Megapiksel: {Style.RESET_ALL}")
+                            fastCharging = get_choice_input(f"{Fore.BLUE}Hızlı Şarj Desteği Var mı? (E/H): {Style.RESET_ALL}", ["e", "h"])
 
-                        new_phone = Phone(
-                            id, name, price, amount, warranty, ram, storage,
-                            fiveGsupport, numberofCameras, fastCharging
-                        )
-                        print(f"{Fore.GREEN}{new_phone.get__name()} başarıyla eklendi!{Style.RESET_ALL}")
-                    except Exception as e:
-                        print(f"{Fore.RED}Hata: {e}{Style.RESET_ALL}")
+                            new_phone = Phone(
+                                id, name, price, amount, warranty, ram, storage,
+                                fiveGsupport, numberofCameras, fastCharging
+                            )
+                            print(f"{Fore.GREEN}{new_phone.get__name()} başarıyla eklendi!{Style.RESET_ALL}")
+                        except Exception as e:
+                            print(f"{Fore.RED}Hata: {e}{Style.RESET_ALL}")
 
-                elif secim == 3:
-                    try:
-                        id = input(f"{Fore.BLUE}Ürün ID: {Style.RESET_ALL}")
-                        name = input(f"{Fore.BLUE}Bilgisayar Adı: {Style.RESET_ALL}")
-                        price = get_integer_input(f"{Fore.BLUE}Fiyat: {Style.RESET_ALL}")
-                        amount = get_integer_input(f"{Fore.BLUE}Miktar: {Style.RESET_ALL}")
-                        warranty = get_integer_input(f"{Fore.BLUE}Garanti Süresi: {Style.RESET_ALL}")
-                        ram = get_integer_input(f"{Fore.BLUE}RAM: {Style.RESET_ALL}")
-                        storage = get_integer_input(f"{Fore.BLUE}Depolama: {Style.RESET_ALL}")
+                    elif secim == 2:
+                        try:
+                            id = input(f"{Fore.BLUE}Ürün ID: {Style.RESET_ALL}")
+                            name = input(f"{Fore.BLUE}Bilgisayar Adı: {Style.RESET_ALL}")
+                            price = get_integer_input(f"{Fore.BLUE}Fiyat: {Style.RESET_ALL}")
+                            amount = get_integer_input(f"{Fore.BLUE}Miktar: {Style.RESET_ALL}")
+                            warranty = get_integer_input(f"{Fore.BLUE}Garanti Süresi: {Style.RESET_ALL}")
+                            ram = get_integer_input(f"{Fore.BLUE}RAM: {Style.RESET_ALL}")
+                            storage = get_integer_input(f"{Fore.BLUE}Depolama: {Style.RESET_ALL}")
 
-                        new_pc = Pc(
-                            id, name, price, amount, warranty, ram, storage
-                        )
-                        print(f"{Fore.GREEN}{new_pc.get__name()} başarıyla eklendi!{Style.RESET_ALL}")
-                    except Exception as e:
-                        print(f"{Fore.RED}Hata: {e}{Style.RESET_ALL}")
+                            new_pc = Pc(
+                                id, name, price, amount, warranty, ram, storage
+                            )
+                            print(f"{Fore.GREEN}{new_pc.get__name()} başarıyla eklendi!{Style.RESET_ALL}")
+                        except Exception as e:
+                            print(f"{Fore.RED}Hata: {e}{Style.RESET_ALL}")
+                    elif secim == 3:
+                        break
+                    else:
+                        print(f"{Fore.RED}Geçersiz seçim!{Style.RESET_ALL}")
+                elif kategori == 2:  # Kişisel Bakım
+                    print(f"{Fore.YELLOW}\nAlt Kategoriler:{Style.RESET_ALL}")
+                    print(f"{Fore.YELLOW}1 : Parfüm{Style.RESET_ALL}")
+                    print(f"{Fore.YELLOW}2 : Şampuan{Style.RESET_ALL}")
+                    print(f"{Fore.YELLOW}3 : geri{Style.RESET_ALL}")
+                    secim = get_integer_input(f"{Fore.BLUE}Hangi alt kategoriye ürün eklemek istiyorsunuz (1): {Style.RESET_ALL}")
+                    if secim == 1:
+                        try:
+                            id = input(f"{Fore.BLUE}Ürün ID: {Style.RESET_ALL}")
+                            name = input(f"{Fore.BLUE}Ürün Adı: {Style.RESET_ALL}")
+                            price = get_integer_input(f"{Fore.BLUE}Fiyat: {Style.RESET_ALL}")
+                            amount = get_integer_input(f"{Fore.BLUE}Miktar: {Style.RESET_ALL}")
+                            expiration_date = get_integer_input(f"{Fore.BLUE}Son Kullanma Tarihi: {Style.RESET_ALL}")
+                            brand = input(f"{Fore.BLUE}Marka: {Style.RESET_ALL}")
+                            volume = get_integer_input(f"{Fore.BLUE}Ürün Hacmi: {Style.RESET_ALL}")
+                            gender_target = get_choice_input(f"{Fore.BLUE}Cinsiyet Hedefi (E/K): {Style.RESET_ALL}", ["e", "k"])
+                            alcohol_content = get_choice_input(f"{Fore.BLUE}Alkol Durumu (İçerir/İçermez): {Style.RESET_ALL}", ["içerir", "içermez"])
+
+                            new_perfume = Perfume(
+                                id, name, price, amount, expiration_date, brand, volume, gender_target, alcohol_content
+                            )
+                            print(f"{Fore.GREEN}{new_perfume.get__name()} başarıyla eklendi!{Style.RESET_ALL}")
+                        except Exception as e:
+                            print(f"{Fore.RED}Hata: {e}{Style.RESET_ALL}")
+                    elif secim == 2:
+                        try:
+                            id = input(f"{Fore.BLUE}Ürün ID: {Style.RESET_ALL}")
+                            name = input(f"{Fore.BLUE}Ürün Adı: {Style.RESET_ALL}")
+                            price = get_integer_input(f"{Fore.BLUE}Fiyat: {Style.RESET_ALL}")
+                            amount = get_integer_input(f"{Fore.BLUE}Miktar: {Style.RESET_ALL}")
+                            expiration_date = get_integer_input(f"{Fore.BLUE}Son Kullanma Tarihi: {Style.RESET_ALL}")
+                            brand = input(f"{Fore.BLUE}Marka: {Style.RESET_ALL}")
+                            paraben = get_choice_input(f"{Fore.BLUE}Koruyucu İçeriyor mu? (E/H): {Style.RESET_ALL}", ["e", "h"])
+                            hairType = input(f"{Fore.BLUE}Saç Tipi: {Style.RESET_ALL}")
+                            volume = get_integer_input(f"{Fore.BLUE}Ürün Hacmi: {Style.RESET_ALL}")
+
+                            new_shampoo = Shampoo(
+                                id, name, price, amount, expiration_date, brand, paraben, hairType, volume
+                            )
+                            print(f"{Fore.GREEN}{new_shampoo.get__name()} başarıyla eklendi!{Style.RESET_ALL}")
+                        except Exception as e:
+                            print(f"{Fore.RED}Hata: {e}{Style.RESET_ALL}")
+                    elif secim == 3:
+                        break
+                    else:
+                        print(f"{Fore.RED}Geçersiz seçim!{Style.RESET_ALL}")
+                elif kategori == 3:
+                    pass
                 else:
-                    print(f"{Fore.RED}Geçersiz seçim!{Style.RESET_ALL}")
-            elif kategori == 2:  # Kişisel Bakım
-                print(f"{Fore.YELLOW}\nAlt Kategoriler:{Style.RESET_ALL}")
-                print(f"{Fore.YELLOW}1 : Parfüm{Style.RESET_ALL}")
-                print(f"{Fore.YELLOW}2 : Şampuan{Style.RESET_ALL}")
-                secim = get_integer_input(f"{Fore.BLUE}Hangi alt kategoriye ürün eklemek istiyorsunuz (1): {Style.RESET_ALL}")
-                if secim == 1:
-                    try:
-                        id = input(f"{Fore.BLUE}Ürün ID: {Style.RESET_ALL}")
-                        name = input(f"{Fore.BLUE}Ürün Adı: {Style.RESET_ALL}")
-                        price = get_integer_input(f"{Fore.BLUE}Fiyat: {Style.RESET_ALL}")
-                        amount = get_integer_input(f"{Fore.BLUE}Miktar: {Style.RESET_ALL}")
-                        expiration_date = get_integer_input(f"{Fore.BLUE}Son Kullanma Tarihi: {Style.RESET_ALL}")
-                        brand = input(f"{Fore.BLUE}Marka: {Style.RESET_ALL}")
-                        volume = get_integer_input(f"{Fore.BLUE}Ürün Hacmi: {Style.RESET_ALL}")
-                        gender_target = get_choice_input(f"{Fore.BLUE}Cinsiyet Hedefi (E/K): {Style.RESET_ALL}", ["e", "k"])
-                        alcohol_content = get_choice_input(f"{Fore.BLUE}Alkol Durumu (İçerir/İçermez): {Style.RESET_ALL}", ["içerir", "içermez"])
+                    break
 
-                        new_perfume = Perfume(
-                            id, name, price, amount, expiration_date, brand, volume, gender_target, alcohol_content
-                        )
-                        print(f"{Fore.GREEN}{new_perfume.get__name()} başarıyla eklendi!{Style.RESET_ALL}")
-                    except Exception as e:
-                        print(f"{Fore.RED}Hata: {e}{Style.RESET_ALL}")
-                elif secim == 2:
-                    try:
-                        id = input(f"{Fore.BLUE}Ürün ID: {Style.RESET_ALL}")
-                        name = input(f"{Fore.BLUE}Ürün Adı: {Style.RESET_ALL}")
-                        price = get_integer_input(f"{Fore.BLUE}Fiyat: {Style.RESET_ALL}")
-                        amount = get_integer_input(f"{Fore.BLUE}Miktar: {Style.RESET_ALL}")
-                        expiration_date = get_integer_input(f"{Fore.BLUE}Son Kullanma Tarihi: {Style.RESET_ALL}")
-                        brand = input(f"{Fore.BLUE}Marka: {Style.RESET_ALL}")
-                        paraben = get_choice_input(f"{Fore.BLUE}Koruyucu İçeriyor mu? (E/H): {Style.RESET_ALL}", ["e", "h"])
-                        hairType = input(f"{Fore.BLUE}Saç Tipi: {Style.RESET_ALL}")
-                        volume = get_integer_input(f"{Fore.BLUE}Ürün Hacmi: {Style.RESET_ALL}")
 
-                        new_shampoo = Shampoo(
-                            id, name, price, amount, expiration_date, brand, paraben, hairType, volume
-                        )
-                        print(f"{Fore.GREEN}{new_shampoo.get__name()} başarıyla eklendi!{Style.RESET_ALL}")
-                    except Exception as e:
-                        print(f"{Fore.RED}Hata: {e}{Style.RESET_ALL}")
-                else:
-                    print(f"{Fore.RED}Geçersiz seçim!{Style.RESET_ALL}")
-            elif kategori == 3:
-                pass
-            else:
-                break
+
     else:
         print(f"{Fore.RED}Yönetici girişi başarısız! Tekrar deneyiniz.{Style.RESET_ALL}")
 
@@ -269,6 +280,8 @@ def kullanici_girisi():
                                 print(Fore.GREEN + "Sepet temizlendi!" + Style.RESET_ALL)
                             elif islem == 5:
                                 break
+                            else:
+                                print(f"{Fore.RED}geçersiz bir girdi!{Style.RESET_ALL}")
                     elif islem == 3:
                         print(Fore.CYAN + "Çıkış yapılıyor..." + Style.RESET_ALL)
                         break

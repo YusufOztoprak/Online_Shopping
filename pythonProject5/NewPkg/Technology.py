@@ -16,7 +16,6 @@ class Technology(Product):
         self.storage = storage
 
 
-
     def get_warranty(self):
         return self.warranty
 
@@ -36,7 +35,7 @@ class Technology(Product):
         self.storage = storage
 
     def getinfo(self, tecnology):
-        super().getinfo()
+        super().getinfo(self)
         print(f"ürünün garanti süresi: {tecnology.get_warranty()}")
         print(f"ürünün depolama alanı: {tecnology.get_storage()}")
         print(f"ürünün ram kapasitesi: {tecnology.get_ram()}")
