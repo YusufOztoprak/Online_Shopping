@@ -86,6 +86,16 @@ class Shampoo(PersonalCare):
     @classmethod
     def find_by_brand(cls, brand):
         return [shampoo for shampoo in cls.Shampoo_list if shampoo.brand.lower() == brand.lower()]
+
+
+
+    def getinfo(self):
+        super().getinfo()
+        print(f"{Fore.BLUE}ürünün hacmi:{Style.RESET_ALL}", self.getVolume())
+        print(f"{Fore.BLUE}saç tipi:{Style.RESET_ALL}", self.getHairType())
+        print(f"{Fore.BLUE}ürünün kimyasal içeriyor mu?:{Style.RESET_ALL}", self.getParaben())
+        print(" ")
+
     @staticmethod
     def __str__(self):
         return (f"Shampoo(Name: {self.name}, Price: {self.price}, Amount: {self.amount}, "

@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from colorama import Fore, Style
 
 class Product():
     products = []
@@ -12,11 +13,11 @@ class Product():
     @abstractmethod
     def calculate_discounted_price(self, discount_rate):
         pass
-    def getinfo(self, product):
-        print(f"ürün ismi:{product.__name}")
-        print(f"ürün fiyatı:{product.__price}")
-        print(f"ürün miktarı:{product.__amount}")
-        print(f"ürün kimliği:{product.__Id}")
+    def getinfo(self):
+        print(f"{Fore.BLUE}ürün ismi:{Style.RESET_ALL}", self.get__name())
+        print(f"{Fore.BLUE}ürün fiyatı:{Style.RESET_ALL}",self.get__price())
+        print(f"{Fore.BLUE}ürün miktarı:{Style.RESET_ALL}",self.__amount)
+        print(f"{Fore.BLUE}ürün kimliği:{Style.RESET_ALL}", self.get__id())
 
     def add_product(self, product):
         self.products.append(product)

@@ -2,6 +2,8 @@ import Product
 
 class Clothing(Product):
     Clothing_List = []
+
+
     def __init__(self, name, price,amount,Id,size,cloth,color):
         super().__init__(name,price,amount,Id)
         self.size = size
@@ -43,5 +45,6 @@ class Clothing(Product):
     def print_Clothing(self):
         for clothing in self.Clothing_List:
             print(clothing.get_name())
+
 
 

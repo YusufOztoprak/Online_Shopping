@@ -38,7 +38,6 @@ class Perfume(PersonalCare):
             # Var olan dosyayı oku ve yeni veriyle birleştir
             mevcut_veri = pd.read_excel("Parfume_urunleri.xlsx")
             if yeni_veri["id"].iloc[0] in mevcut_veri["id"].values:
-                print("bu ürün zaten mevcut")
                 return
 
             yeni_veri = pd.concat([mevcut_veri, yeni_veri], ignore_index=True)
@@ -57,6 +56,14 @@ class Perfume(PersonalCare):
         Alkol İçeriği: {self.alcohol_content}
         """
         print(details)
+
+
+    def getinfo(self):
+        super().getinfo()
+        print(f"{Fore.BLUE}ürünün hacmi:{Style.RESET_ALL}", self.getVolume())
+        print(f"{Fore.BLUE}ürünün hedef cinsiyeti:{Style.RESET_ALL}",  self.getGenderTarget())
+        print(f"{Fore.BLUE}ürünün alkol içeriği:{Style.RESET_ALL}", self.getAlcoholContent())
+        print(" ")
 
     def getVolume(self):
         return self.volume

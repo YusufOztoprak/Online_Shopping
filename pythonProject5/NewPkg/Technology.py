@@ -34,12 +34,11 @@ class Technology(Product):
     def set_storage(self, storage):
         self.storage = storage
 
-    def getinfo(self, tecnology):
-        super().getinfo(self)
-        print(f"ürünün garanti süresi: {tecnology.get_warranty()}")
-        print(f"ürünün depolama alanı: {tecnology.get_storage()}")
-        print(f"ürünün ram kapasitesi: {tecnology.get_ram()}")
-
+    def getinfo(self):
+        super().getinfo()
+        print(f"{Fore.BLUE}ürünün garanti süresi:{Style.RESET_ALL} ",self.get_warranty())
+        print(f"{Fore.BLUE}ürünün depolama alanı:{Style.RESET_ALL} ",self.get_storage())
+        print(f"{Fore.BLUE}ürünün ram kapasitesi:{Style.RESET_ALL} ",self.get_ram())
 
 
 

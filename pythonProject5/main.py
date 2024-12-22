@@ -195,7 +195,8 @@ def kullanici_girisi():
                     print(Fore.YELLOW + "\nİşlem Seçiniz:" + Style.RESET_ALL)
                     print(Fore.CYAN + "1 : Kategori Seçiniz" + Style.RESET_ALL)
                     print(Fore.CYAN + "2 : Sepete Git" + Style.RESET_ALL)
-                    print(Fore.CYAN + "3 : Çıkış" + Style.RESET_ALL)
+                    print(Fore.CYAN + "3 : sipariş geçmişini göster" + Style.RESET_ALL)
+                    print(Fore.CYAN + "4 : Çıkış" + Style.RESET_ALL)
                     islem = get_integer_input(Fore.YELLOW + "Seçiminiz: " + Style.RESET_ALL)
 
                     if islem == 1:
@@ -222,7 +223,10 @@ def kullanici_girisi():
                                             Phones.append(telefon)
 
                                         for i, phone in enumerate(Phones, start=1):
-                                            print(Fore.CYAN + f"{i}. {phone.get__name()}" + Style.RESET_ALL)
+                                            print(Fore.CYAN + f"{i}. ", end="")
+                                            phone.getinfo()  # Metod zaten bilgileri yazdırıyor
+                                            print(Style.RESET_ALL)
+
                                         secim = get_integer_input(Fore.YELLOW +
                                                                   "Sepete eklemek istediğiniz ürünü seçiniz: " +
                                                                   Style.RESET_ALL)
@@ -249,6 +253,64 @@ def kullanici_girisi():
                                                                   Style.RESET_ALL)
                                         if 1 <= secim <= len(Pclist):
                                             customer1.add_product(Pclist[secim - 1])
+                                            print(Fore.GREEN + "Ürün sepete eklendi!" + Style.RESET_ALL)
+                                        else:
+                                            print(Fore.RED + "Geçersiz seçim!" + Style.RESET_ALL)
+                                    except FileNotFoundError:
+                                        print(Fore.RED + "Ürün dosyası bulunamadı!" + Style.RESET_ALL)
+                                elif alt_kategori == 3:
+                                    break
+
+                        elif  kategori == 2:
+                            while True:
+                                print(" ")
+                                print(Fore.YELLOW + "Alt Kategoriler:" + Style.RESET_ALL)
+                                print(Fore.CYAN + "1 - parfüm" + Style.RESET_ALL)
+                                print(Fore.CYAN + "2 - şampuan" + Style.RESET_ALL)
+                                print(Fore.CYAN + "3 - Geri" + Style.RESET_ALL)
+                                alt_kategori = get_integer_input(Fore.YELLOW + "Seçiminiz: " + Style.RESET_ALL)
+                                print(" ")
+                                if alt_kategori == 1:  # Telefon
+                                    parfumList = []
+                                    try:
+                                        df = pd.read_excel("Parfume_urunleri.xlsx")
+                                        for _, row in df.iterrows():
+                                            parf = Perfume(row["id"], row["name"], row["price"], row["amount"], row["expiration_date"], row["brand"],
+                                                           row["volume"], row["gender_target"], row["alcohol_content"])
+                                            parfumList.append(parf)
+
+                                        for i, parf in enumerate(parfumList, start=1):
+                                            print(Fore.CYAN + f"{i}. ", end="")
+                                            parf.getinfo()  # Metod zaten bilgileri yazdırıyor
+                                            print(Style.RESET_ALL)
+                                        secim = get_integer_input(Fore.YELLOW +
+                                                                  "Sepete eklemek istediğiniz ürünü seçiniz: " +
+                                                                  Style.RESET_ALL)
+                                        if 1 <= secim <= len(parfumList):
+                                            customer1.add_product(parfumList[secim - 1])
+                                            print(Fore.GREEN + "Ürün sepete eklendi!" + Style.RESET_ALL)
+                                        else:
+                                            print(Fore.RED + "Geçersiz seçim!" + Style.RESET_ALL)
+                                    except FileNotFoundError:
+                                        print(Fore.RED + "Ürün dosyası bulunamadı!" + Style.RESET_ALL)
+                                elif alt_kategori == 2:
+                                    sahmpolist = []
+                                    try:
+                                        df = pd.read_excel("sampuan_urunleri.xlsx")
+                                        for _, row in df.iterrows():
+                                            sahmpo = Shampoo(row["id"], row["name"], row["price"], row["amount"],
+                                                    row["expiration_date"], row["brand"], row["paraben"],row["hairType"], row[ "volume"])
+                                            sahmpolist.append(sahmpo)
+
+                                        for i, sahmpo in enumerate(sahmpolist, start=1):
+                                            print(Fore.CYAN + f"{i}. ", end="")
+                                            sahmpo.getinfo()  # Metod zaten bilgileri yazdırıyor
+                                            print(Style.RESET_ALL)
+                                        secim = get_integer_input(Fore.YELLOW +
+                                                                  "Sepete eklemek istediğiniz ürünü seçiniz: " +
+                                                                  Style.RESET_ALL)
+                                        if 1 <= secim <= len(sahmpolist):
+                                            customer1.add_product(sahmpolist[secim - 1])
                                             print(Fore.GREEN + "Ürün sepete eklendi!" + Style.RESET_ALL)
                                         else:
                                             print(Fore.RED + "Geçersiz seçim!" + Style.RESET_ALL)
@@ -312,8 +374,10 @@ def kullanici_girisi():
                             else:
                                 print(f"{Fore.RED}geçersiz bir girdi!{Style.RESET_ALL}")
                     elif islem == 3:
+                        customer1.view_order_history()
+                    elif islem == 4:
                         print(Fore.CYAN + "Çıkış yapılıyor..." + Style.RESET_ALL)
-                        break
+                        return
                     else:
                         print(Fore.RED + "Geçersiz seçim!" + Style.RESET_ALL)
                 break

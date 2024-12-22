@@ -37,7 +37,6 @@ class Pc(Technology.Technology):
             # Var olan dosyayı oku ve yeni veriyle birleştir
             mevcut_veri = pd.read_excel("Pc_urunleri.xlsx")
             if yeni_veri["id"].iloc[0] in mevcut_veri["id"].values:
-                print("bu ürün zaten mevcut")
                 return
 
             yeni_veri = pd.concat([mevcut_veri, yeni_veri], ignore_index=True)
@@ -73,3 +72,7 @@ class Pc(Technology.Technology):
     def printPcList(self):
         for pc in self.PcList:
             print(pc.getName(), pc.getPrice())
+
+    def getinfo(self):
+        super().getinfo()
+        print(" ")

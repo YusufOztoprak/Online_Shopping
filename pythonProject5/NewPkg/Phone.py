@@ -1,7 +1,10 @@
+from overrides import overrides
+
 from pythonProject5.NewPkg.Technology import Technology
 from pythonProject5.NewPkg.Product import Product
 import pandas as pd
 from abc import ABC, abstractmethod
+from colorama import Fore, Style
 
 
 class Phone(Technology):
@@ -34,7 +37,6 @@ class Phone(Technology):
             # Var olan dosyayı oku ve yeni veriyle birleştir
             mevcut_veri = pd.read_excel("telefon_urunleri.xlsx")
             if yeni_veri["id"].iloc[0] in mevcut_veri["id"].values:
-                print("bu ürün zaten mevcut")
                 return
 
             yeni_veri = pd.concat([mevcut_veri, yeni_veri], ignore_index=True)

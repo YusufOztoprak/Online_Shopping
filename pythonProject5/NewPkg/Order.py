@@ -3,10 +3,11 @@ from pythonProject5.NewPkg import customer
 
 
 class Order:
-    def __init__(self,cart:cart,customer:customer):
+    def __init__(self,cart:cart,customer:customer , lastOrder = []):
         self.cart = cart
         self.customer = customer
         self.total = 0
+        self.lastOrder = lastOrder
 
     def calculate_total(self):
         self.total = self.cart.total_price()
@@ -18,7 +19,7 @@ class Order:
         confirmation = input(f"Are you sure you want to complete the order? (yes/no): ").strip().lower()
 
         if confirmation == 'yes':
-            return f"Order has been completed."
+            return f"Order for {self.customer} has been completed."
         else:
             return "Order was not completed."
 

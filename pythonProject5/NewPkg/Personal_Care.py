@@ -13,6 +13,12 @@ class PersonalCare(Product):
         self.expiration_date = expiration_date
         self.brand = brand
 
+
+    def getinfo(self):
+        super().getinfo()
+        print(f"{Fore.BLUE}ürünün son kullanma tarihi:{Style.RESET_ALL}", self.get_expiration_date())
+        print(f"{Fore.BLUE}ürünün markası:{Style.RESET_ALL}", self.get_brand())
+
     def get_expiration_date(self):
         return self.expiration_date
 
