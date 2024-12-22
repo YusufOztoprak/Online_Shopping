@@ -1,3 +1,4 @@
+from pythonProject5.NewPkg.Order import Order
 from pythonProject5.NewPkg.Parfume import Perfume
 from pythonProject5.NewPkg.Phone import Phone
 from pythonProject5.NewPkg.Pc import Pc
@@ -263,7 +264,8 @@ def kullanici_girisi():
                         print(Fore.CYAN + "2 - Sepetten Ürün Sil" + Style.RESET_ALL)
                         print(Fore.CYAN + "3 - Toplam Tutarı Göster" + Style.RESET_ALL)
                         print(Fore.CYAN + "4 - Sepeti Temizle" + Style.RESET_ALL)
-                        print(Fore.CYAN + "5 - Geri Dön" + Style.RESET_ALL)
+                        print(Fore.CYAN + "5 - Sepeti Onayla " + Style.RESET_ALL)
+                        print(Fore.CYAN + "6 - Geri Dön" + Style.RESET_ALL)
                         while True:
                             islem = int(input(Fore.YELLOW + "Hangi işlemi yapmak istiyorsunuz: " + Style.RESET_ALL))
                             print(" ")
@@ -279,6 +281,33 @@ def kullanici_girisi():
                                 customer1.clear_cart()
                                 print(Fore.GREEN + "Sepet temizlendi!" + Style.RESET_ALL)
                             elif islem == 5:
+                                if len(customer1.cart) != 0:
+                                    # Step 1: Ask the user to confirm the final cart details
+                                    confirmation = input(
+                                        "Are you sure you want to confirm and proceed with this cart? (yes/no): ").strip().lower()
+
+                                    if confirmation == 'yes':
+                                        # Step 2: Sepetin toplam fiyatını hesaplayalım
+                                        print(f"Your total is: {customer1.total_price()}.")
+
+                                        # Step 3: Sipariş oluşturuluyor
+                                        order = Order(cart=customer1.cart, customer=customer1)
+                                        order_confirmation = order.complete_order()  # Sipariş onayı
+                                        print(order_confirmation)
+
+                                        if order_confirmation == "Order has been completed.":
+                                            # Step 4: Sipariş tamamlandıktan sonra siparişi müşteri geçmişine ekleyelim
+                                            """customer1.add_to_order_history(order)"""
+                                            print("Your order has been added to your order history.")
+
+                                            # Step 5: Sepeti temizleyelim
+                                            customer1.clear_cart()  # Sepeti temizle
+                                            print("Your cart has been cleared after the order.")
+                                        else:
+                                            print("Your cart has not been confirmed. Please review your cart again.")
+                                else:
+                                    print("Your cart is empty. Please add items to your cart before confirming the order.")
+                            elif islem == 6:
                                 break
                             else:
                                 print(f"{Fore.RED}geçersiz bir girdi!{Style.RESET_ALL}")

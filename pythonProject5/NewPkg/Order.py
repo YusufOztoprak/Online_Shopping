@@ -13,13 +13,20 @@ class Order:
         return self.total
 
 
-
     def complete_order(self):
-        return f"Order for {self.customer} has been completed"
+        # Ask for confirmation before completing the order
+        confirmation = input(f"Are you sure you want to complete the order? (yes/no): ").strip().lower()
+
+        if confirmation == 'yes':
+            return f"Order has been completed."
+        else:
+            return "Order was not completed."
 
     def display_order(self):
         return f"Order for {self.customer} has been ordered {self.cart.show_cart()}"
 
     def total_price(self):
         return self.cart.total_price()
+
+
 

@@ -12,6 +12,7 @@ class customer:
         self.__phone_number = phone_number
         self.__Id = uuid.uuid4()
         self.cart = cart
+        self.order_history = []
 
 
     def add_product(self, product):
@@ -71,9 +72,19 @@ class customer:
     def get_info(self):
         print(f"isim: {self.get__name()}\nemail: {self.get__email()}\naddress: {self.get__address()}\nmüşteri Id: {self.get__Id()}")
 
+    def view_order_history(self):
+        """Sipariş geçmişini göster."""
+        if not self.order_history:
+            print(f"{self.__namecus} has no past orders.")
+        else:
+            print(f"{self.__namecus}'s Order History:")
+            for i, order in enumerate(self.order_history, start=1):
+                print(f"{i}. Order: {order.display_order()} - Total: ${order.total_price()}")
 
 
 
+    """def add_to_order_history(self,Order : order):
+        self.order_history.append(order.)"""
 # nesne oluşturabiliyoruz
 # customer2 = customer("mehmet", "my0308", "malatya")
 #print(customer1.get__address())
