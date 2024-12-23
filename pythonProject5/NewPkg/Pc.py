@@ -6,9 +6,6 @@ class Pc(Technology.Technology):
 
     def calculate_discounted_price(self, discount_rate = 0.05):
         discounted_price = self.get__price() * (1 - discount_rate)
-        # Minimum fiyat kontrolü
-        if discounted_price < 5000:
-            return 5000
         return discounted_price
 
 

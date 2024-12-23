@@ -366,8 +366,6 @@ def kullanici_girisi():
                             else:
                                 print(f"{Fore.RED}geçersiz bir girdi!{Style.RESET_ALL}")
                     elif islem == 3:
-                        customer1.view_order_history()
-                    elif islem == 4:
                         print(Fore.CYAN + "Çıkış yapılıyor..." + Style.RESET_ALL)
                         return
                     else:

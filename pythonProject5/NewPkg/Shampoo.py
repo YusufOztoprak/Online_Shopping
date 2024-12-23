@@ -8,9 +8,6 @@ class Shampoo(PersonalCare):
     @abstractmethod
     def calculate_discounted_price(self, discount_rate):
         discounted_price = self.get__price() * (1 - discount_rate)
-        # Minimum fiyat kontrolü
-        if discounted_price < 50:
-            return 50
         return discounted_price
 
     Shampoo_list = []
