@@ -37,9 +37,12 @@ class Technology(Product):
 
     def getinfo(self):
         super().getinfo()
-        print(f"{Fore.BLUE}ürünün garanti süresi:{Style.RESET_ALL} ",self.get_warranty())
-        print(f"{Fore.BLUE}ürünün depolama alanı:{Style.RESET_ALL} ",self.get_storage())
-        print(f"{Fore.BLUE}ürünün ram kapasitesi:{Style.RESET_ALL} ",self.get_ram())
+        print(f"{Fore.BLUE}ürünün garanti süresi:{Style.RESET_ALL} ", self.get_warranty())
+        print(f"{Fore.BLUE}ürünün depolama alanı:{Style.RESET_ALL} ", self.get_storage())
+        print(f"{Fore.BLUE}ürünün ram kapasitesi:{Style.RESET_ALL} ", self.get_ram())
+
+
+
 
 
 

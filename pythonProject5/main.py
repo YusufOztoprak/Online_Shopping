@@ -322,22 +322,21 @@ def kullanici_girisi():
                                     break
 
                     elif islem == 2:
-                        customer1.show_cart()
-
-                        print(Fore.YELLOW + "İşlemler:" + Style.RESET_ALL)
-                        print(Fore.CYAN + "1 - Sepeti Göster" + Style.RESET_ALL)
-                        print(Fore.CYAN + "2 - Sepetten Ürün Sil" + Style.RESET_ALL)
-                        print(Fore.CYAN + "3 - Toplam Tutarı Göster" + Style.RESET_ALL)
-                        print(Fore.CYAN + "4 - Sepeti Temizle" + Style.RESET_ALL)
-                        print(Fore.CYAN + "5 - Sepeti Onayla " + Style.RESET_ALL)
-                        print(Fore.CYAN + "6 - Geri Dön" + Style.RESET_ALL)
                         while True:
+                            print(Fore.YELLOW + "İşlemler:" + Style.RESET_ALL)
+                            print(Fore.CYAN + "1 - Sepeti Göster" + Style.RESET_ALL)
+                            print(Fore.CYAN + "2 - Sepetten Ürün Sil" + Style.RESET_ALL)
+                            print(Fore.CYAN + "3 - Toplam Tutarı Göster" + Style.RESET_ALL)
+                            print(Fore.CYAN + "4 - Sepeti Temizle" + Style.RESET_ALL)
+                            print(Fore.CYAN + "5 - Sepeti Onayla " + Style.RESET_ALL)
+                            print(Fore.CYAN + "6 - Geri Dön" + Style.RESET_ALL)
                             islem = int(input(Fore.YELLOW + "Hangi işlemi yapmak istiyorsunuz: " + Style.RESET_ALL))
                             print(" ")
                             if islem == 1:
                                 customer1.show_cart()
                             elif islem == 2:
-                                customer1.show_cart()
+                                for i, _ in  enumerate (customer1.cart, start=1):
+                                    print(i, ".ürün:", _.get__name())
                                 sec = int(input(Fore.YELLOW + "Silmek istediğiniz ürünün numarası: " + Style.RESET_ALL))
                                 customer1.remove_product(sec)
                             elif islem == 3:
@@ -359,17 +358,7 @@ def kullanici_girisi():
                                         order = Order(cart=customer1.cart, customer=customer1)
                                         order_confirmation = order.complete_order()  # Sipariş onayı
                                         print(order_confirmation)
-
-                                        if order_confirmation == "Order has been completed.":
-                                            # Step 4: Sipariş tamamlandıktan sonra siparişi müşteri geçmişine ekleyelim
-                                            customer1.add_to_order_history(order)
-                                            print("Your order has been added to your order history.")
-
-                                            # Step 5: Sepeti temizleyelim
-                                            customer1.clear_cart()  # Sepeti temizle
-                                            print("Your cart has been cleared after the order.")
-                                        else:
-                                            print("Your cart has not been confirmed. Please review your cart again.")
+                                        customer1.clear_cart()
                                 else:
                                     print("Your cart is empty. Please add items to your cart before confirming the order.")
                             elif islem == 6:
