@@ -1,5 +1,6 @@
 from pythonProject5.NewPkg import cart
 from pythonProject5.NewPkg import customer
+from colorama import Fore,Style
 
 
 class Order:
@@ -16,12 +17,12 @@ class Order:
 
     def complete_order(self):
         # Ask for confirmation before completing the order
-        confirmation = input(f"Are you sure you want to complete the order? (yes/no): ").strip().lower()
+        confirmation = input(f"{Fore.RED} Are you sure you want to complete the order? (yes/no):{Style.RESET_ALL} ").strip().lower()
 
         if confirmation == 'yes':
-            return f"Order for {self.customer} has been completed."
+            return f"{Fore.RED}Order for {self.customer} has been completed.{Style.RESET_ALL}"
         else:
-            return "Order was not completed."
+            return f"{Fore.RED}Order was not completed.{Style.RESET_ALL}"
 
     def display_order(self):
         return f"Order for {self.customer} has been ordered {self.cart.show_cart()}"
